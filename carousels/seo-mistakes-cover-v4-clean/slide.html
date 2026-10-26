@@ -1,0 +1,32 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+@font-face{font-family:Poppins;font-weight:800;src:url(fonts/Poppins-ExtraBold.ttf)}
+@font-face{font-family:Poppins;font-weight:500;src:url(fonts/Poppins-Medium.ttf)}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1350px;overflow:hidden}
+body{position:relative;font-family:Poppins,sans-serif;background:linear-gradient(38deg,#A5000C 0%,#D0000A 50%,#F00000 100%)}
+.sheen{position:absolute;inset:0;background:radial-gradient(70% 55% at 92% 8%,rgba(255,120,110,.22),transparent 60%),radial-gradient(60% 50% at 0% 100%,rgba(12,12,14,.28),transparent 70%)}
+svg.shapes{position:absolute;inset:0;width:1080px;height:1350px}
+.glow{position:absolute;left:520px;top:520px;width:620px;height:620px;border-radius:50%;background:radial-gradient(circle,rgba(255,90,80,.35),transparent 65%);filter:blur(20px)}
+.person{position:absolute;right:-22px;bottom:0;height:860px;
+ filter:drop-shadow(-22px 14px 28px rgba(12,12,14,.55)) drop-shadow(0 0 1.5px rgba(12,12,14,.35))}
+h1{position:absolute;left:80px;top:72px;width:940px;color:#fff;font-weight:800;font-size:92px;line-height:1.04;letter-spacing:-2px;
+ text-shadow:0 4px 12px rgba(12,12,14,.38),0 2px 2px rgba(12,12,14,.22)}
+h1 span{display:block}
+h1 .l2{margin-top:10px}
+.pill{position:absolute;left:80px;top:520px;width:370px;background:rgba(12,12,14,.8);color:#fff;font-weight:500;font-size:29px;line-height:1.34;
+ padding:24px 28px;border-radius:26px;box-shadow:0 12px 28px rgba(12,12,14,.3)}
+.icons{position:absolute;left:80px;top:716px;display:flex;gap:16px}
+.icons .ic{width:64px;height:64px;border:2.5px solid #fff;border-radius:50%;display:grid;place-items:center}
+.icons svg{width:32px;height:32px;stroke:#fff;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.swipe{position:absolute;right:80px;bottom:80px;width:80px;height:80px;border-radius:50%;border:3px solid #fff;background:rgba(12,12,14,.35);display:grid;place-items:center}
+.swipe svg{width:40px;height:40px;stroke:#fff;fill:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+</style></head><body>
+<img class="person" src="person.png">
+<h1><span>Your website</span><span>gets visitors.</span><span class="l2">So why is</span><span>nobody calling?</span></h1>
+<div class="pill">7 SEO mistakes, and how to check each one in <span style="white-space:nowrap">2 minutes.</span></div>
+<div class="icons">
+ <div class="ic"><svg viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21"/></svg></div>
+ <div class="ic"><svg viewBox="0 0 24 24"><path d="M12 3.5 2.5 20h19z"/><path d="M12 10v4.5"/><path d="M12 17.3v.2"/></svg></div>
+</div>
+<div class="swipe"><svg viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6"/></svg></div>
+</body></html>
