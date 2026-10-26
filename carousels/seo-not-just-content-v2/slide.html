@@ -1,0 +1,114 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+@font-face{font-family:Poppins;font-weight:400;src:url(fonts/Poppins-Regular.ttf)}
+@font-face{font-family:Poppins;font-weight:500;src:url(fonts/Poppins-Medium.ttf)}
+@font-face{font-family:Poppins;font-weight:600;src:url(fonts/Poppins-SemiBold.ttf)}
+@font-face{font-family:Poppins;font-weight:700;src:url(fonts/Poppins-Bold.ttf)}
+@font-face{font-family:Poppins;font-weight:800;src:url(fonts/Poppins-ExtraBold.ttf)}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1350px;overflow:hidden}
+body{position:relative;font-family:Poppins,sans-serif;color:#111111;
+ background:radial-gradient(60% 30% at 100% 0%,rgba(255,0,49,.09),rgba(255,0,49,0) 70%),radial-gradient(55% 30% at 0% 75%,rgba(255,0,49,.06),rgba(255,0,49,0) 70%),#FFFFFF}
+.grid{position:absolute;inset:0;background-image:linear-gradient(rgba(17,17,17,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(17,17,17,.035) 1px,transparent 1px);background-size:40px 40px}
+.page{position:absolute;left:56px;right:56px;top:40px}
+/* header */
+.kick{display:inline-flex;align-items:center;gap:10px;font-weight:600;font-size:19px;color:#111;background:#fff;border:1.5px solid rgba(255,0,49,.35);border-radius:40px;padding:5px 18px 5px 8px}
+.kick i{width:22px;height:22px;border-radius:50%;background:#FF0031;display:block;box-shadow:0 0 0 5px rgba(255,0,49,.15)}
+.kick b{color:#FF0031;font-weight:600}
+h1{margin-top:16px;font-weight:800;font-size:76px;line-height:1.02;letter-spacing:-2px}
+h1 span{color:#FF0031;position:relative;white-space:nowrap}
+.sub{margin-top:10px;font-weight:500;font-size:25px;color:#444}
+
+/* "what people think" row */
+.think{margin-top:30px;display:flex;align-items:center;gap:18px}
+.content{flex:none;display:flex;align-items:center;gap:12px;border:2.5px dashed #BDBDBD;border-radius:14px;padding:12px 22px;background:#fff}
+.content svg{width:26px;height:26px;stroke:#9A9A9A;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.content span{font-weight:800;font-size:22px;letter-spacing:1.5px;color:#9A9A9A}
+.think p{font-weight:500;font-size:21px;color:#555}
+.think p b{font-weight:700;color:#111}
+.real{margin-top:22px;display:flex;align-items:center;gap:14px}
+.real .line{flex:1;height:3px;background:linear-gradient(90deg,#FF0031,rgba(255,0,49,.1))}
+.real p{font-weight:700;font-size:23px;color:#111}
+.real p b{color:#FF0031}
+.real svg{width:30px;height:30px;stroke:#FF0031;fill:none;stroke-width:2.8;stroke-linecap:round;stroke-linejoin:round}
+
+/* layer cards */
+.stack{margin-top:20px;display:flex;flex-direction:column;gap:22px;position:relative}
+.card{position:relative;display:flex;background:#fff;border-radius:22px;border:1.5px solid rgba(255,0,49,.16);box-shadow:0 14px 30px rgba(17,17,17,.06),0 2px 6px rgba(17,17,17,.04);overflow:hidden}
+.side{flex:none;width:150px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;color:#fff}
+.side .n{font-weight:800;font-size:44px;line-height:1;letter-spacing:-1px}
+.side svg{width:44px;height:44px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.c1 .side{background:#FF6680}.c2 .side{background:#FF3358}.c3 .side{background:#FF0031}.c4 .side{background:#C80027}
+.body{flex:1;padding:26px 28px 26px 30px}
+.t{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
+.t h2{font-weight:800;font-size:27px;letter-spacing:.5px;color:#111}
+.t p{font-weight:500;font-size:19px;color:#FF0031}
+.chips{margin-top:12px;display:flex;flex-wrap:wrap;gap:9px}
+.chip{background:#FFF1F3;border:1.5px solid rgba(255,0,49,.22);border-radius:8px;padding:5px 13px;font-weight:600;font-size:17px;color:#111}
+.dark{margin-top:11px;display:inline-flex;align-items:center;gap:8px;background:#111;color:#fff;font-weight:600;font-size:15.5px;padding:6px 14px;border-radius:7px}
+.dark i{width:8px;height:8px;border-radius:50%;background:#FF0031;display:block}
+.depth{position:absolute;right:-30px;top:8px;bottom:8px;width:14px}
+
+/* footer */
+.foot{position:absolute;left:0;right:0;bottom:0;height:112px;background:#FF0031;display:flex;align-items:center;padding:0 40px;gap:20px;color:#fff}
+.av{flex:none;width:78px;height:78px;border-radius:50%;border:3px solid #fff;overflow:hidden;background:#fff}
+.av img{width:100%;height:100%;display:block}
+.ft{font-size:19px;line-height:1.32;font-weight:500;width:450px}
+.ft b{font-weight:700}
+.rp{flex:none;background:#fff;color:#FF0031;font-weight:800;font-size:22px;letter-spacing:.5px;padding:12px 22px;border-radius:10px;display:flex;align-items:center;gap:10px;box-shadow:0 6px 14px rgba(17,17,17,.18)}
+.rp svg{width:24px;height:24px;stroke:#FF0031;fill:none;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+.fr{font-size:19px;line-height:1.32;font-weight:600}
+</style></head><body>
+<div class="grid"></div>
+<div class="page">
+ <div class="kick"><i></i>Shehroz Shafique · <b>CEO, Permanent SEO</b></div>
+ <h1>SEO Is <span>NOT</span> Just Content</h1>
+ <div class="sub">What SEO actually looks like in 2026.</div>
+
+ <div class="think">
+  <div class="content"><svg viewBox="0 0 24 24"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6"/><path d="M8 13h8M8 17h5"/></svg><span>CONTENT</span></div>
+  <p>&larr; <b>What most people think SEO is.</b></p>
+ </div>
+
+ <div class="real"><p>What actually ranks you and <b>gets you cited.</b></p><div class="line"></div><svg viewBox="0 0 24 24"><path d="M12 4v16M6 14l6 6 6-6"/></svg></div>
+
+ <div class="stack">
+  <div class="card c1">
+   <div class="side"><div class="n">01</div><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3.2"/><path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3M5.3 5.3l2.1 2.1M16.6 16.6l2.1 2.1M5.3 18.7l2.1-2.1M16.6 7.4l2.1-2.1"/></svg></div>
+   <div class="body">
+    <div class="t"><h2>TECHNICAL FOUNDATION</h2><p>Google can't rank what it can't crawl.</p></div>
+    <div class="chips"><span class="chip">Crawl + index</span><span class="chip">Core Web Vitals</span><span class="chip">Mobile UX</span><span class="chip">Site architecture</span><span class="chip">Internal links</span></div>
+   </div>
+  </div>
+  <div class="card c2">
+   <div class="side"><div class="n">02</div><svg viewBox="0 0 24 24"><path d="M12 2.8l7.5 3v5.6c0 4.6-3.2 8.3-7.5 9.8-4.3-1.5-7.5-5.2-7.5-9.8V5.8z"/><path d="M8.6 12l2.4 2.4 4.6-4.8"/></svg></div>
+   <div class="body">
+    <div class="t"><h2>AUTHORITY</h2><p>Who else vouches for you.</p></div>
+    <div class="chips"><span class="chip">Backlinks + PR</span><span class="chip">Reddit + forums</span><span class="chip">Reviews</span><span class="chip">"Best X" lists</span><span class="chip">E-E-A-T</span></div>
+    <div class="dark"><i></i>~85% of AI citations come from third-party sites</div>
+   </div>
+  </div>
+  <div class="card c3">
+   <div class="side"><div class="n">03</div><svg viewBox="0 0 24 24"><path d="M11 3l1.8 4.9L17.7 9.7l-4.9 1.8L11 16.4 9.2 11.5 4.3 9.7l4.9-1.8z"/><path d="M18.5 14.5l.8 2.2 2.2.8-2.2.8-.8 2.2-.8-2.2-2.2-.8 2.2-.8z"/></svg></div>
+   <div class="body">
+    <div class="t"><h2>AI SEARCH (GEO)</h2><p>Getting cited, not just ranked.</p></div>
+    <div class="chips"><span class="chip">AI Overviews</span><span class="chip">ChatGPT citations</span><span class="chip">Entity clarity</span><span class="chip">Schema</span><span class="chip">Answer-first pages</span><span class="chip">Query fan-out</span></div>
+   </div>
+  </div>
+  <div class="card c4">
+   <div class="side"><div class="n">04</div><svg viewBox="0 0 24 24"><path d="M3.5 20.5h17"/><path d="M5 16l5-5 3.5 3.5L20 8"/><path d="M15 8h5v5"/></svg></div>
+   <div class="body">
+    <div class="t"><h2>REVENUE</h2><p>The only layer your CFO cares about.</p></div>
+    <div class="chips"><span class="chip">CRO</span><span class="chip">Lead tracking</span><span class="chip">GSC + GA4</span><span class="chip">Revenue per page</span></div>
+    <div class="dark"><i></i>Rankings are the means. Revenue is the point.</div>
+   </div>
+  </div>
+ </div>
+</div>
+
+<div class="foot">
+ <div class="av"><img src="avatar.png"></div>
+ <div class="ft">I'm Shehroz Shafique.<br><b>Hire me and Permanent SEO to grow your SEO</b></div>
+ <div class="rp"><svg viewBox="0 0 24 24"><path d="M4 9h13l-3-3"/><path d="M20 15H7l3 3"/></svg>REPOST</div>
+ <div class="fr">and let's make SEO<br>simpler for millions.</div>
+</div>
+</body></html>
