@@ -1,0 +1,146 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+@font-face{font-family:Poppins;font-weight:400;src:url(fonts/Poppins-Regular.ttf)}
+@font-face{font-family:Poppins;font-weight:500;src:url(fonts/Poppins-Medium.ttf)}
+@font-face{font-family:Poppins;font-weight:600;src:url(fonts/Poppins-SemiBold.ttf)}
+@font-face{font-family:Poppins;font-weight:700;src:url(fonts/Poppins-Bold.ttf)}
+@font-face{font-family:Poppins;font-weight:800;src:url(fonts/Poppins-ExtraBold.ttf)}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1350px;overflow:hidden}
+body{position:relative;background:radial-gradient(70% 40% at 100% 0%,rgba(232,75,85,.10),rgba(232,75,85,0) 70%),radial-gradient(60% 35% at 0% 20%,rgba(232,75,85,.07),rgba(232,75,85,0) 70%),#FFFFFF;font-family:Poppins,sans-serif;color:#111111}
+.bg{position:absolute;left:0;top:0}
+.abs{position:absolute}
+/* header */
+h1{position:absolute;left:0;right:0;top:26px;text-align:center;font-weight:800;font-size:72px;letter-spacing:-1.5px;line-height:1.1}
+h1 span{color:#E84B55}
+.sub{position:absolute;left:0;right:0;top:110px;text-align:center;font-weight:500;font-size:26px;color:#333}
+.by{position:absolute;left:0;right:0;top:154px;display:flex;justify-content:center}
+.by div{font-weight:600;font-size:20px;color:#111;background:#FFFFFF;border:2px solid rgba(232,75,85,.35);border-radius:40px;padding:6px 22px}
+.by b{color:#E84B55;font-weight:600}
+/* annotations */
+.note{position:absolute;font-weight:500;font-size:22px;line-height:1.3;color:#111}
+.note b{color:#E84B55;font-weight:700}
+/* peak label */
+.peak{position:absolute;left:470px;top:302px;width:140px;height:44px;border-radius:10px;background:#FFFFFF;border:2.5px solid #E84B55;box-shadow:0 6px 14px rgba(232,75,85,.22);
+ display:flex;align-items:center;justify-content:center;font-weight:800;font-size:19px;letter-spacing:1px;color:#E84B55}
+/* layers */
+.layer{position:absolute;left:0;right:0;display:flex;flex-direction:column;align-items:center}
+.head{display:flex;align-items:center;gap:12px}
+.num{width:42px;height:42px;border-radius:50%;background:#111111;color:#FFFFFF;font-weight:700;font-size:21px;display:flex;align-items:center;justify-content:center;box-shadow:0 3px 8px rgba(17,17,17,.2)}
+.tag{background:linear-gradient(90deg,#D9444C,#E84B55);color:#FFFFFF;font-weight:700;font-size:23px;letter-spacing:.6px;padding:7px 22px;border-radius:9px;box-shadow:0 5px 12px rgba(217,68,76,.30)}
+.cap{margin-top:6px;font-weight:500;font-size:20px;color:#222}
+.chips{margin-top:10px;display:flex;flex-wrap:wrap;justify-content:center;gap:10px;max-width:900px}
+.chip{background:#FFFFFF;border:1.5px solid rgba(232,75,85,.30);border-radius:8px;padding:6px 15px;font-weight:600;font-size:17px;color:#111;box-shadow:0 2px 5px rgba(17,17,17,.06)}
+.dark{margin-top:10px;background:#111111;color:#FFFFFF;font-weight:600;font-size:15px;padding:6px 16px;border-radius:7px}
+/* footer */
+.foot{position:absolute;left:0;right:0;bottom:0;height:110px;background:linear-gradient(90deg,#D9444C,#E84B55);display:flex;align-items:center;padding:0 40px;gap:20px;color:#FFFFFF}
+.av{flex:none;width:76px;height:76px;border-radius:50%;border:3px solid #FFFFFF;overflow:hidden;background:#fff}
+.av img{width:100%;height:100%;display:block}
+.ft{font-size:19px;line-height:1.3;font-weight:500;width:450px}
+.ft b{font-weight:700}
+.rp{flex:none;background:#FFFFFF;color:#E84B55;font-weight:800;font-size:22px;letter-spacing:.5px;padding:12px 22px;border-radius:10px;display:flex;align-items:center;gap:10px;box-shadow:0 6px 14px rgba(17,17,17,.18)}
+.rp svg{width:24px;height:24px;stroke:#E84B55;fill:none;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+.fr{font-size:19px;line-height:1.3;font-weight:600}
+</style></head><body>
+
+<svg class="bg" width="1080" height="1350" viewBox="0 0 1080 1350">
+ <defs>
+  <linearGradient id="rock" x1="0" y1="0" x2="1" y2="0">
+   <stop offset="0" stop-color="#F6C3C6"/><stop offset=".5" stop-color="#F09CA2"/><stop offset=".5" stop-color="#E9858C"/><stop offset="1" stop-color="#E37880"/>
+  </linearGradient>
+  <linearGradient id="side" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F7D0D2"/><stop offset="1" stop-color="#F2B3B7"/></linearGradient>
+  <clipPath id="mass"><path id="massp" d="M70 444 L96 480 L84 530 L64 600 L74 670 L46 760 L54 840 L28 930 L36 1020 L10 1120 L0 1240 L1080 1240 L1070 1130 L1048 1040 L1056 950 L1030 860 L1040 770 L1012 690 L1022 610 L998 530 L1010 480 L990 444 Z"/></clipPath>
+  <filter id="sh" x="-10%" y="-10%" width="120%" height="120%"><feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#D9444C" flood-opacity=".18"/></filter>
+  <filter id="cs" x="-10%" y="-50%" width="120%" height="200%"><feDropShadow dx="0" dy="6" stdDeviation="7" flood-color="#D9444C" flood-opacity=".16"/></filter>
+ </defs>
+
+ <g transform="translate(0,-76)">
+ <!-- distant ranges -->
+ <path d="M0 520 L0 430 L70 380 L120 410 L190 340 L250 395 L300 370 L370 450 L380 520 Z" fill="#FBE3E4"/>
+ <path d="M1080 520 L1080 420 L1010 370 L950 405 L880 335 L820 400 L760 380 L700 460 L690 520 Z" fill="#FBE3E4"/>
+
+ <!-- main summit (above the clouds) -->
+ <g filter="url(#sh)">
+  <path d="M540 268 L570 300 L590 296 L630 350 L660 362 L720 440 L760 470 L800 530 L280 530 L330 470 L370 438 L420 372 L450 360 L500 298 L518 304 Z" fill="url(#rock)"/>
+  <!-- side peaks -->
+  <path d="M170 530 L250 418 L272 432 L300 400 L380 500 L400 530 Z" fill="url(#side)"/>
+  <path d="M680 530 L760 430 L790 448 L840 395 L930 500 L950 530 Z" fill="url(#side)"/>
+  <!-- snow caps -->
+  <path d="M540 268 L570 300 L590 296 L616 332 L596 326 L580 344 L560 330 L540 352 L522 334 L500 348 L484 330 L462 340 L500 298 L518 304 Z" fill="#FFFFFF"/>
+  <path d="M300 400 L322 428 L308 424 L296 436 L286 424 L272 432 Z" fill="#FFFFFF"/>
+  <path d="M840 395 L866 428 L850 424 L838 438 L826 424 L812 430 Z" fill="#FFFFFF"/>
+  <!-- ridge lines -->
+  <path d="M540 352 L548 400 L536 450 L552 520" stroke="#D9444C" stroke-opacity=".25" stroke-width="3" fill="none" stroke-linecap="round"/>
+ </g>
+
+ </g>
+ <!-- massif strata (below the clouds) -->
+ <g clip-path="url(#mass)" filter="url(#sh)">
+  <rect x="0" y="400" width="1080" height="222" fill="#FDEBEC"/>
+  <rect x="0" y="622" width="1080" height="206" fill="#FADADC"/>
+  <rect x="0" y="828" width="1080" height="210" fill="#F7C8CB"/>
+  <rect x="0" y="1038" width="1080" height="210" fill="#F3B5B9"/>
+ </g>
+ <use href="#massp" fill="none" stroke="#E84B55" stroke-width="2.5" stroke-dasharray="9 7" stroke-opacity=".55"/>
+ <g stroke="#E84B55" stroke-opacity=".45" stroke-width="2.5" stroke-dasharray="9 7">
+  <path d="M70 622 H1016"/><path d="M48 828 H1036"/><path d="M28 1038 H1054"/>
+ </g>
+
+ <g transform="translate(0,-76)">
+ <!-- cloud line -->
+ <g fill="#FFFFFF" filter="url(#cs)">
+  <ellipse cx="60" cy="528" rx="110" ry="30"/><ellipse cx="170" cy="516" rx="90" ry="34"/><ellipse cx="290" cy="530" rx="120" ry="30"/>
+  <ellipse cx="410" cy="518" rx="95" ry="34"/><ellipse cx="540" cy="532" rx="130" ry="30"/><ellipse cx="670" cy="518" rx="95" ry="34"/>
+  <ellipse cx="790" cy="530" rx="120" ry="30"/><ellipse cx="910" cy="516" rx="90" ry="34"/><ellipse cx="1020" cy="528" rx="110" ry="30"/>
+  <rect x="0" y="528" width="1080" height="22" rx="11"/>
+ </g>
+
+ <!-- annotation arrows -->
+ <g stroke="#111111" stroke-width="2.8" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M190 330 C 300 310, 390 330, 458 386"/><path d="M440 386 L460 389 L456 369"/>
+  <path d="M960 348 C 1010 400, 1000 470, 960 520"/><path d="M954 500 L958 522 L978 514"/>
+ </g>
+ </g>
+</svg>
+
+<h1>SEO Is <span>NOT</span> Just Content</h1>
+<div class="sub">What SEO actually looks like in 2026.</div>
+<div class="by"><div>Shehroz Shafique · <b>CEO, Permanent SEO</b></div></div>
+
+<div class="note" style="left:44px;top:214px;width:230px">What most people<br>think SEO is.</div>
+<div class="note" style="left:782px;top:214px;width:290px;text-align:left">What actually ranks you<br>and <b>gets you cited.</b></div>
+
+<div class="peak">CONTENT</div>
+
+<div class="layer" style="top:484px">
+ <div class="head"><div class="num">1</div><div class="tag">TECHNICAL FOUNDATION</div></div>
+ <div class="cap">Google can't rank what it can't crawl.</div>
+ <div class="chips"><span class="chip">Crawl + index</span><span class="chip">Core Web Vitals</span><span class="chip">Mobile UX</span><span class="chip">Site architecture</span><span class="chip">Internal links</span></div>
+</div>
+
+<div class="layer" style="top:636px">
+ <div class="head"><div class="num">2</div><div class="tag">AUTHORITY</div></div>
+ <div class="cap">Who else vouches for you.</div>
+ <div class="chips"><span class="chip">Backlinks + PR</span><span class="chip">Reddit + forums</span><span class="chip">Reviews</span><span class="chip">"Best X" lists</span><span class="chip">E-E-A-T</span></div>
+ <div class="dark">~85% of AI citations come from third-party sites</div>
+</div>
+
+<div class="layer" style="top:842px">
+ <div class="head"><div class="num">3</div><div class="tag">AI SEARCH (GEO)</div></div>
+ <div class="cap">Getting cited, not just ranked.</div>
+ <div class="chips"><span class="chip">AI Overviews</span><span class="chip">ChatGPT citations</span><span class="chip">Entity clarity</span><span class="chip">Schema</span><span class="chip">Answer-first pages</span><span class="chip">Query fan-out</span></div>
+</div>
+
+<div class="layer" style="top:1052px">
+ <div class="head"><div class="num">4</div><div class="tag">REVENUE</div></div>
+ <div class="cap">The only layer your CFO cares about.</div>
+ <div class="chips"><span class="chip">CRO</span><span class="chip">Lead tracking</span><span class="chip">GSC + GA4</span><span class="chip">Revenue per page</span></div>
+ <div class="dark">Rankings are the means. Revenue is the point.</div>
+</div>
+
+<div class="foot">
+ <div class="av"><img src="avatar.png"></div>
+ <div class="ft">I'm Shehroz Shafique.<br><b>Hire me and Permanent SEO to grow your SEO</b></div>
+ <div class="rp"><svg viewBox="0 0 24 24"><path d="M4 9h13l-3-3"/><path d="M20 15H7l3 3"/></svg>REPOST</div>
+ <div class="fr">and let's make SEO<br>simpler for millions.</div>
+</div>
+</body></html>
