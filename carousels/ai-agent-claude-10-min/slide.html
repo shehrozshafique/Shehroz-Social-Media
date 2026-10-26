@@ -1,0 +1,125 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+@font-face{font-family:Poppins;font-weight:400;src:url(fonts/Poppins-Regular.ttf)}
+@font-face{font-family:Poppins;font-weight:500;src:url(fonts/Poppins-Medium.ttf)}
+@font-face{font-family:Poppins;font-weight:600;src:url(fonts/Poppins-SemiBold.ttf)}
+@font-face{font-family:Poppins;font-weight:700;src:url(fonts/Poppins-Bold.ttf)}
+@font-face{font-family:Poppins;font-weight:800;src:url(fonts/Poppins-ExtraBold.ttf)}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1350px;overflow:hidden}
+body{position:relative;font-family:Poppins,sans-serif;color:#111111;
+ background:radial-gradient(60% 30% at 100% 0%,rgba(255,0,49,.09),rgba(255,0,49,0) 70%),radial-gradient(55% 30% at 0% 75%,rgba(255,0,49,.06),rgba(255,0,49,0) 70%),#FFFFFF}
+.grid{position:absolute;inset:0;background-image:linear-gradient(rgba(17,17,17,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(17,17,17,.035) 1px,transparent 1px);background-size:40px 40px}
+.page{position:absolute;left:52px;right:52px;top:38px}
+/* header */
+.hd{display:flex;align-items:center;justify-content:space-between}
+h1{font-weight:800;font-size:58px;line-height:1.04;letter-spacing:-1.8px}
+h1 span{color:#FF0031}
+.sub{margin-top:10px;font-weight:500;font-size:22px;color:#444}
+.hub{flex:none;position:relative;width:190px;height:190px;margin-right:6px}
+.hub .sq{position:absolute;left:27px;top:27px;width:136px;height:136px;border-radius:34px;background:linear-gradient(145deg,#FF3358,#FF0031 55%,#D80029);box-shadow:0 20px 40px rgba(255,0,49,.32);display:flex;align-items:center;justify-content:center}
+.hub .sq svg{width:84px;height:84px}
+.hub .ring{position:absolute;inset:0;border-radius:50%;border:2px dashed rgba(255,0,49,.35)}
+.hub .tm{position:absolute;right:-6px;bottom:8px;background:#111;color:#fff;font-weight:700;font-size:15px;padding:6px 12px;border-radius:30px;display:flex;align-items:center;gap:6px}
+.hub .tm svg{width:16px;height:16px;stroke:#fff;fill:none;stroke-width:2.4;stroke-linecap:round}
+/* steps */
+.steps{margin-top:20px;display:grid;grid-template-columns:1fr 1fr;gap:20px 16px}
+.st{position:relative;display:flex;gap:16px;background:#fff;border:1.5px solid rgba(255,0,49,.16);border-radius:20px;padding:14px 18px 14px 16px;box-shadow:0 12px 26px rgba(17,17,17,.055),0 2px 5px rgba(17,17,17,.04)}
+.ic{flex:none;width:52px;height:52px;border-radius:15px;background:#FFF1F3;border:1.5px solid rgba(255,0,49,.18);display:flex;align-items:center;justify-content:center}
+.ic svg{width:27px;height:27px;stroke:#FF0031;fill:none;stroke-width:2.1;stroke-linecap:round;stroke-linejoin:round}
+.tx{flex:1;min-width:0}
+.top{display:flex;align-items:center;gap:9px}
+.pill{flex:none;background:#FF0031;color:#fff;font-weight:700;font-size:12.5px;letter-spacing:.8px;padding:3px 10px;border-radius:20px}
+.st h3{font-weight:800;font-size:19.5px;line-height:1.2;letter-spacing:-.2px}
+.st p{margin-top:5px;font-weight:400;font-size:15px;line-height:1.42;color:#333}
+.st p b{font-weight:600;color:#111}
+.q{margin-top:7px;background:#FFF1F3;border-left:3.5px solid #FF0031;border-radius:0 8px 8px 0;padding:6px 10px;font-weight:500;font-size:14.5px;line-height:1.42;color:#111}
+.st.last{grid-column:1 / span 2;background:linear-gradient(90deg,#FF0031,#E6002C);border:none;color:#fff;align-items:center;padding:16px 22px}
+.st.last .ic{background:rgba(255,255,255,.16);border-color:rgba(255,255,255,.35)}
+.st.last .ic svg{stroke:#fff}
+.st.last .pill{background:#fff;color:#FF0031}
+.st.last p{color:#fff;opacity:.95}
+.st.last .tx{display:flex;align-items:center;gap:22px}
+.st.last h3{white-space:nowrap}
+/* footer */
+.foot{position:absolute;left:0;right:0;bottom:0;height:124px;background:#FF0031;display:flex;align-items:center;justify-content:space-between;padding:0 36px;color:#fff}
+.vr{flex:none;width:1.5px;height:62px;background:rgba(255,255,255,.35)}
+.me{display:flex;align-items:center;gap:14px}
+.av{flex:none;width:76px;height:76px;border-radius:50%;border:3px solid #fff;overflow:hidden;background:#fff}
+.av img{width:100%;height:100%;display:block}
+.nm b{display:block;font-weight:800;font-size:21px;line-height:1.2}
+.nm span{display:block;font-weight:500;font-size:15px;opacity:.92;margin-top:2px}
+.svc{font-size:16px;line-height:1.35;font-weight:500;width:262px}
+.svc b{font-weight:700}
+.rp{flex:none;background:#fff;color:#FF0031;font-weight:800;font-size:20px;letter-spacing:.5px;padding:12px 20px;border-radius:10px;display:flex;align-items:center;gap:9px;box-shadow:0 6px 14px rgba(17,17,17,.18)}
+.rp svg{width:22px;height:22px;stroke:#FF0031;fill:none;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+.ag{display:flex;align-items:center;gap:11px}
+.ag img{height:46px;display:block}
+.ag p{font-weight:800;font-size:18px;line-height:1.1;letter-spacing:.3px}
+</style></head><body>
+<div class="grid"></div>
+<div class="page">
+ <div class="hd">
+  <div>
+   <h1>How to Build<br><span>AI Agent with Claude</span><br>in 10 Minutes</h1>
+   <div class="sub">No coding. No complex setup. Just Claude + a few simple steps.</div>
+  </div>
+  <div class="hub"><div class="ring"></div>
+   <div class="sq"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4.5" y="8" width="15" height="11" rx="3.5"/><path d="M12 8V5"/><circle cx="12" cy="4" r="1.2" fill="#fff"/><circle cx="9.3" cy="13" r="1.3" fill="#fff" stroke="none"/><circle cx="14.7" cy="13" r="1.3" fill="#fff" stroke="none"/><path d="M10 16.3h4"/><path d="M2.5 12.5v2.5M21.5 12.5v2.5"/></svg></div>
+   <div class="tm"><svg viewBox="0 0 24 24"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2M9.5 2.5h5"/></svg>10 MIN</div>
+  </div>
+ </div>
+
+ <div class="steps">
+  <div class="st"><div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 2.6 3.8 5.6 3.8 9s-1.2 6.4-3.8 9c-2.6-2.6-3.8-5.6-3.8-9S9.4 5.6 12 3z"/></svg></div>
+   <div class="tx"><div class="top"><span class="pill">STEP 1</span></div><h3 style="margin-top:6px">Go to Claude (claude.ai)</h3>
+   <p>Open your browser and visit <b>claude.ai</b>. Sign in to your account (or create one if you're new).</p></div></div>
+
+  <div class="st"><div class="ic"><svg viewBox="0 0 24 24"><path d="M12 2.5l2.2 7.3 7.3 2.2-7.3 2.2L12 21.5l-2.2-7.3L2.5 12l7.3-2.2z"/></svg></div>
+   <div class="tx"><div class="top"><span class="pill">STEP 2</span></div><h3 style="margin-top:6px">Use this prompt</h3>
+   <div class="q">"I want to build an AI agent. Ask me the right questions one by one to set it up. I'm new to this, so keep it simple and beginner-friendly."</div></div></div>
+
+  <div class="st"><div class="ic"><svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="7" height="7" rx="2"/><rect x="13.5" y="3.5" width="7" height="7" rx="2"/><rect x="3.5" y="13.5" width="7" height="7" rx="2"/><rect x="13.5" y="13.5" width="7" height="7" rx="2"/></svg></div>
+   <div class="tx"><div class="top"><span class="pill">STEP 3</span></div><h3 style="margin-top:6px">Add a skill (optional but powerful)</h3>
+   <p>In Settings, turn on useful capabilities like <b>Skills</b>, <b>Web search</b> and <b>Code execution</b>. This helps your agent do more.</p></div></div>
+
+  <div class="st"><div class="ic"><svg viewBox="0 0 24 24"><circle cx="18" cy="5.5" r="2.8"/><circle cx="6" cy="12" r="2.8"/><circle cx="18" cy="18.5" r="2.8"/><path d="M8.5 10.7l7-3.9M8.5 13.3l7 3.9"/></svg></div>
+   <div class="tx"><div class="top"><span class="pill">STEP 4</span></div><h3 style="margin-top:6px">Connect your tools</h3>
+   <p>Go to <b>Connectors</b> and add the tools you need: Gmail, Google Drive, Notion, Slack and more. Just click, authorize and connect.</p></div></div>
+
+  <div class="st"><div class="ic"><svg viewBox="0 0 24 24"><path d="M20.5 11.5a8.5 8 0 0 1-12.3 7.2L3.5 20l1.4-4.2A8.5 8 0 1 1 20.5 11.5z"/></svg></div>
+   <div class="tx"><div class="top"><span class="pill">STEP 5</span></div><h3 style="margin-top:6px">Set up your agent</h3>
+   <p>Create a <b>Project</b>: give it a name, a description and instructions that define its goal.</p>
+   <div class="q">"Help me manage my emails and summarize important messages daily."</div></div></div>
+
+  <div class="st"><div class="ic"><svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/><circle cx="9" cy="7" r="2" fill="#FFF1F3"/><circle cx="15" cy="12" r="2" fill="#FFF1F3"/><circle cx="8" cy="17" r="2" fill="#FFF1F3"/></svg></div>
+   <div class="tx"><div class="top"><span class="pill">STEP 6</span></div><h3 style="margin-top:6px">Configure settings</h3>
+   <p>Adjust the behavior, response style and permissions. Choose how it should respond, which tools to use and what it can access.</p></div></div>
+
+  <div class="st"><div class="ic"><svg viewBox="0 0 24 24"><path d="M7 4.5v15l12-7.5z"/></svg></div>
+   <div class="tx"><div class="top"><span class="pill">STEP 7</span></div><h3 style="margin-top:6px">Test your agent</h3>
+   <p>Try a few real tasks. Ask it something like:</p>
+   <div class="q">"Search for the latest AI news and give me a <span style="white-space:nowrap">3-point</span> summary."</div></div></div>
+
+  <div class="st"><div class="ic"><svg viewBox="0 0 24 24"><path d="M14.5 4.5c2.5-1.5 5-1.5 5-1.5s0 2.5-1.5 5l-6 6-3.5-3.5z"/><path d="M8.5 10.5L5 10l-2 2 4.5 1.5M13.5 15.5l.5 3.5-2 2-1.5-4.5"/><circle cx="15.5" cy="8.5" r="1.3"/><path d="M6 18l-2 2"/></svg></div>
+   <div class="tx"><div class="top"><span class="pill">STEP 8</span></div><h3 style="margin-top:6px">Make it live</h3>
+   <p>If everything works, keep it in your Project. Use it anytime on the web, desktop or mobile app.</p></div></div>
+
+  <div class="st"><div class="ic"><svg viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 1-14.3 4.9M4 12a8 8 0 0 1 14.3-4.9"/><path d="M18.5 3v4.2h-4.2M5.5 21v-4.2h4.2"/></svg></div>
+   <div class="tx"><div class="top"><span class="pill">STEP 9</span></div><h3 style="margin-top:6px">Improve over time</h3>
+   <p>See what works, tweak the prompt, add more skills or tools. <b>The more you use it, the smarter it gets.</b></p></div></div>
+
+  <div class="st"><div class="ic"><svg viewBox="0 0 24 24"><path d="M4 20l4.5-12 7.5 7.5z"/><path d="M14 4l1 2M19 5l-2 2M20 10l-2 .5M11.5 3.5c1.5 1.5 1.5 3.5 0 5"/></svg></div>
+   <div class="tx"><div class="top"><span class="pill">STEP 10</span></div><h3 style="margin-top:6px">Enjoy your AI agent!</h3>
+   <p>You just built your first AI agent with Claude in 10 minutes. <b>Now go build something amazing!</b></p></div></div>
+ </div>
+</div>
+
+<div class="foot">
+ <div class="me"><div class="av"><img src="avatar.png"></div><div class="nm"><b>Shehroz Shafique</b><span>CEO of Permanent SEO</span></div></div>
+ <div class="vr"></div>
+ <div class="svc">Helping businesses build their <b>brand &amp; permanent growth</b></div>
+ <div class="rp"><svg viewBox="0 0 24 24"><path d="M4 9h13l-3-3"/><path d="M20 15H7l3 3"/></svg>REPOST</div>
+ <div class="vr"></div>
+ <div class="ag"><img src="logo-white.png"><p>PERMANENT<br>SEO</p></div>
+</div>
+</body></html>
