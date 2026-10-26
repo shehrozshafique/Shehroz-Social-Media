@@ -1,0 +1,86 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+@font-face{font-family:Poppins;font-weight:400;src:url(fonts/Poppins-Regular.ttf)}
+@font-face{font-family:Poppins;font-weight:600;src:url(fonts/Poppins-SemiBold.ttf)}
+@font-face{font-family:Poppins;font-weight:700;src:url(fonts/Poppins-Bold.ttf)}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1350px;overflow:hidden}
+body{position:relative;background:radial-gradient(75% 55% at 100% 0%,rgba(232,75,85,.16),rgba(232,75,85,0) 70%),radial-gradient(70% 50% at 0% 100%,rgba(232,75,85,.13),rgba(232,75,85,0) 70%),#FFFFFF;font-family:Poppins,sans-serif;color:#111111}
+.dots{position:absolute;inset:0;background-image:radial-gradient(rgba(232,75,85,.13) 1.6px,transparent 2px);background-size:34px 34px;background-position:17px 17px}
+.blob{position:absolute;background:#FDF3F2}
+.b1{width:520px;height:440px;right:-170px;top:-150px;border-radius:58% 42% 55% 45%/52% 60% 40% 48%}
+.b2{width:480px;height:420px;left:-180px;bottom:-150px;border-radius:45% 55% 40% 60%/55% 45% 58% 42%}
+.wrap{position:absolute;left:80px;top:80px;width:920px;height:1190px;display:flex;flex-direction:column;gap:50px}
+.card{flex:1;background:#FDF3F2;border-radius:36px;padding:46px 50px 44px;
+ box-shadow:0 18px 40px rgba(17,17,17,.07),0 2px 6px rgba(17,17,17,.05);border:1px solid rgba(232,75,85,.10);display:flex;flex-direction:column;justify-content:center}
+.top{display:flex;align-items:center;justify-content:space-between;gap:24px;margin-bottom:34px;padding-bottom:34px;border-bottom:2px dashed rgba(232,75,85,.25)}
+h2{font-weight:700;font-size:46px;line-height:1.18;letter-spacing:-.5px;
+ background:linear-gradient(90deg,#D9444C,#E84B55);-webkit-background-clip:text;background-clip:text;color:transparent;
+ filter:drop-shadow(0 2px 2.5px rgba(17,17,17,.13))}
+.ill{flex:none;width:230px;height:160px}
+.rows{display:flex;flex-direction:column;gap:26px}
+.row{display:flex;gap:18px;align-items:flex-start}
+.row svg{flex:none;width:36px;height:36px;margin-top:5px;stroke:#E84B55;fill:none;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.row p{font-weight:400;font-size:29px;line-height:1.52}
+.row b{font-weight:600;color:#E84B55}
+</style></head><body>
+
+<svg width="0" height="0" style="position:absolute">
+ <symbol id="mag" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21"/></symbol>
+ <symbol id="chk" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.5"/><path d="M7.8 12.3l2.9 2.9 5.6-6"/></symbol>
+</svg>
+<div class="wrap">
+ <div class="card">
+  <div class="top">
+   <h2>Mistake 1: One page trying to rank for everything.</h2>
+   <svg class="ill" viewBox="0 0 230 160">
+    <!-- arrows converging -->
+    <g stroke="#E84B55" stroke-width="4" stroke-linecap="round" fill="#E84B55">
+     <path d="M8 18 L62 50" fill="none"/><path d="M62 50 l-13 -1 6 -9z" stroke-linejoin="round"/>
+     <path d="M4 82 L58 82" fill="none"/><path d="M60 82 l-11 -6 0 12z" stroke-linejoin="round"/>
+     <path d="M10 146 L62 116" fill="none"/><path d="M63 115 l-6 11 -6 -9z" stroke-linejoin="round"/>
+     <path d="M222 16 L170 48" fill="none"/><path d="M168 49 l6 -11 6 9z" stroke-linejoin="round"/>
+     <path d="M226 84 L174 84" fill="none"/><path d="M172 84 l11 -6 0 12z" stroke-linejoin="round"/>
+     <path d="M220 150 L170 118" fill="none"/><path d="M168 117 l13 1 -6 9z" stroke-linejoin="round"/>
+     <path d="M115 2 L115 18" fill="none"/><path d="M115 21 l-6 -10 12 0z" stroke-linejoin="round"/>
+    </g>
+    <!-- webpage -->
+    <rect x="66" y="26" width="98" height="114" rx="10" fill="#FDF3F2" stroke="#111111" stroke-width="3.5"/>
+    <path d="M66 46 H164" stroke="#111111" stroke-width="3"/>
+    <circle cx="77" cy="36" r="3.2" fill="#E84B55"/><circle cx="87" cy="36" r="3.2" fill="#111111"/><circle cx="97" cy="36" r="3.2" fill="#111111"/>
+    <rect x="78" y="58" width="74" height="22" rx="4" fill="#E84B55"/>
+    <g stroke="#111111" stroke-width="3.5" stroke-linecap="round"><path d="M80 94 H150"/><path d="M80 106 H140"/><path d="M80 118 H150"/><path d="M80 130 H128"/></g>
+   </svg>
+  </div>
+  <div class="rows">
+   <div class="row"><svg><use href="#mag"/></svg><p><b>Check:</b> is your homepage targeting every service?</p></div>
+   <div class="row"><svg><use href="#chk"/></svg><p><b>Fix:</b> one service = one page, each with its own title, H1 and FAQs.</p></div>
+  </div>
+ </div>
+ <div class="card">
+  <div class="top">
+   <h2>Mistake 2: Titles nobody clicks.</h2>
+   <svg class="ill" viewBox="0 0 230 160">
+    <!-- snippet card -->
+    <rect x="2" y="6" width="150" height="92" rx="12" fill="#FDF3F2" stroke="#111111" stroke-width="3.5"/>
+    <circle cx="22" cy="27" r="8" fill="#E84B55"/>
+    <g stroke-linecap="round"><path d="M38 23 H88" stroke="#111111" stroke-width="3"/><path d="M38 32 H68" stroke="#111111" stroke-width="2.5"/>
+    <path d="M16 52 H132" stroke="#E84B55" stroke-width="6"/>
+    <path d="M16 70 H138" stroke="#111111" stroke-width="3"/><path d="M16 82 H108" stroke="#111111" stroke-width="3"/></g>
+    <!-- cursor -->
+    <path d="M112 56 L112 92 L121 83 L128 98 L135 95 L128 80 L140 80 Z" fill="#111111" stroke="#FDF3F2" stroke-width="2.5" stroke-linejoin="round"/>
+    <!-- low bar chart panel -->
+    <rect x="132" y="92" width="94" height="64" rx="12" fill="#FDF3F2" stroke="#111111" stroke-width="3.5"/>
+    <path d="M144 142 H214" stroke="#111111" stroke-width="3" stroke-linecap="round"/>
+    <rect x="148" y="126" width="12" height="13" rx="3" fill="#E84B55"/>
+    <rect x="166" y="120" width="12" height="19" rx="3" fill="#E84B55"/>
+    <rect x="184" y="129" width="12" height="10" rx="3" fill="#E84B55"/>
+    <rect x="202" y="133" width="10" height="6" rx="2.5" fill="#111111"/>
+   </svg>
+  </div>
+  <div class="rows">
+   <div class="row"><svg><use href="#mag"/></svg><p><b>Check:</b> Search Console &gt; Performance &gt; Pages, sort by impressions. High impressions with CTR under <span style="white-space:nowrap">2% = weak title.</span></p></div>
+   <div class="row"><svg><use href="#chk"/></svg><p><b>Fix:</b> Service + Town + Reason to click. Example: "Emergency Plumber Leeds | 60-Minute Callout".</p></div>
+  </div>
+ </div>
+</div>
+</body></html>
