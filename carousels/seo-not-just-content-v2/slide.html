@@ -9,17 +9,17 @@ html,body{width:1080px;height:1350px;overflow:hidden}
 body{position:relative;font-family:Poppins,sans-serif;color:#111111;
  background:radial-gradient(60% 30% at 100% 0%,rgba(255,0,49,.09),rgba(255,0,49,0) 70%),radial-gradient(55% 30% at 0% 75%,rgba(255,0,49,.06),rgba(255,0,49,0) 70%),#FFFFFF}
 .grid{position:absolute;inset:0;background-image:linear-gradient(rgba(17,17,17,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(17,17,17,.035) 1px,transparent 1px);background-size:40px 40px}
-.page{position:absolute;left:56px;right:56px;top:40px}
+.page{position:absolute;left:56px;right:56px;top:52px}
 /* header */
 .kick{display:inline-flex;align-items:center;gap:10px;font-weight:600;font-size:19px;color:#111;background:#fff;border:1.5px solid rgba(255,0,49,.35);border-radius:40px;padding:5px 18px 5px 8px}
 .kick i{width:22px;height:22px;border-radius:50%;background:#FF0031;display:block;box-shadow:0 0 0 5px rgba(255,0,49,.15)}
 .kick b{color:#FF0031;font-weight:600}
-h1{margin-top:16px;font-weight:800;font-size:76px;line-height:1.02;letter-spacing:-2px}
+h1{margin-top:0;font-weight:800;font-size:76px;line-height:1.02;letter-spacing:-2px}
 h1 span{color:#FF0031;position:relative;white-space:nowrap}
-.sub{margin-top:10px;font-weight:500;font-size:25px;color:#444}
+.sub{margin-top:12px;font-weight:500;font-size:25px;color:#444}
 
 /* "what people think" row */
-.think{margin-top:30px;display:flex;align-items:center;gap:18px}
+.think{margin-top:34px;display:flex;align-items:center;gap:18px}
 .content{flex:none;display:flex;align-items:center;gap:12px;border:2.5px dashed #BDBDBD;border-radius:14px;padding:12px 22px;background:#fff}
 .content svg{width:26px;height:26px;stroke:#9A9A9A;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
 .content span{font-weight:800;font-size:22px;letter-spacing:1.5px;color:#9A9A9A}
@@ -49,18 +49,23 @@ h1 span{color:#FF0031;position:relative;white-space:nowrap}
 .depth{position:absolute;right:-30px;top:8px;bottom:8px;width:14px}
 
 /* footer */
-.foot{position:absolute;left:0;right:0;bottom:0;height:112px;background:#FF0031;display:flex;align-items:center;padding:0 40px;gap:20px;color:#fff}
-.av{flex:none;width:78px;height:78px;border-radius:50%;border:3px solid #fff;overflow:hidden;background:#fff}
+.foot{position:absolute;left:0;right:0;bottom:0;height:124px;background:#FF0031;display:flex;align-items:center;justify-content:space-between;padding:0 36px;color:#fff}
+.vr{flex:none;width:1.5px;height:62px;background:rgba(255,255,255,.35)}
+.me{display:flex;align-items:center;gap:14px}
+.av{flex:none;width:76px;height:76px;border-radius:50%;border:3px solid #fff;overflow:hidden;background:#fff}
 .av img{width:100%;height:100%;display:block}
-.ft{font-size:19px;line-height:1.32;font-weight:500;width:450px}
-.ft b{font-weight:700}
-.rp{flex:none;background:#fff;color:#FF0031;font-weight:800;font-size:22px;letter-spacing:.5px;padding:12px 22px;border-radius:10px;display:flex;align-items:center;gap:10px;box-shadow:0 6px 14px rgba(17,17,17,.18)}
-.rp svg{width:24px;height:24px;stroke:#FF0031;fill:none;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
-.fr{font-size:19px;line-height:1.32;font-weight:600}
+.nm b{display:block;font-weight:800;font-size:21px;line-height:1.2}
+.nm span{display:block;font-weight:500;font-size:15px;opacity:.92;margin-top:2px}
+.svc{font-size:16px;line-height:1.35;font-weight:500;width:262px}
+.svc b{font-weight:700}
+.rp{flex:none;background:#fff;color:#FF0031;font-weight:800;font-size:20px;letter-spacing:.5px;padding:12px 20px;border-radius:10px;display:flex;align-items:center;gap:9px;box-shadow:0 6px 14px rgba(17,17,17,.18)}
+.rp svg{width:22px;height:22px;stroke:#FF0031;fill:none;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+.ag{display:flex;align-items:center;gap:11px}
+.ag img{height:46px;display:block}
+.ag p{font-weight:800;font-size:18px;line-height:1.1;letter-spacing:.3px}
 </style></head><body>
 <div class="grid"></div>
 <div class="page">
- <div class="kick"><i></i>Shehroz Shafique · <b>CEO, Permanent SEO</b></div>
  <h1>SEO Is <span>NOT</span> Just Content</h1>
  <div class="sub">What SEO actually looks like in 2026.</div>
 
@@ -106,9 +111,11 @@ h1 span{color:#FF0031;position:relative;white-space:nowrap}
 </div>
 
 <div class="foot">
- <div class="av"><img src="avatar.png"></div>
- <div class="ft">I'm Shehroz Shafique.<br><b>Hire me and Permanent SEO to grow your SEO</b></div>
+ <div class="me"><div class="av"><img src="avatar.png"></div><div class="nm"><b>Shehroz Shafique</b><span>CEO of Permanent SEO</span></div></div>
+ <div class="vr"></div>
+ <div class="svc">Helping businesses build their <b>brand &amp; permanent growth</b></div>
  <div class="rp"><svg viewBox="0 0 24 24"><path d="M4 9h13l-3-3"/><path d="M20 15H7l3 3"/></svg>REPOST</div>
- <div class="fr">and let's make SEO<br>simpler for millions.</div>
+ <div class="vr"></div>
+ <div class="ag"><img src="logo-white.png"><p>PERMANENT<br>SEO</p></div>
 </div>
 </body></html>
