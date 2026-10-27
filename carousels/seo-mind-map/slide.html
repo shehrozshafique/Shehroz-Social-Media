@@ -1,0 +1,105 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+@font-face{font-family:Poppins;font-weight:400;src:url(fonts/Poppins-Regular.ttf)}
+@font-face{font-family:Poppins;font-weight:500;src:url(fonts/Poppins-Medium.ttf)}
+@font-face{font-family:Poppins;font-weight:600;src:url(fonts/Poppins-SemiBold.ttf)}
+@font-face{font-family:Poppins;font-weight:700;src:url(fonts/Poppins-Bold.ttf)}
+@font-face{font-family:Poppins;font-weight:800;src:url(fonts/Poppins-ExtraBold.ttf)}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1350px;overflow:hidden}
+body{position:relative;font-family:Poppins,sans-serif;color:#111111;
+ background:radial-gradient(55% 30% at 100% 0%,rgba(255,0,49,.09),rgba(255,0,49,0) 70%),radial-gradient(50% 35% at 0% 55%,rgba(255,0,49,.08),rgba(255,0,49,0) 70%),#FFFFFF}
+.grid{position:absolute;inset:0;background-image:radial-gradient(rgba(255,0,49,.10) 1.4px,transparent 1.8px);background-size:30px 30px}
+#scene{position:absolute;left:0;top:0}
+.abs{position:absolute}
+/* root */
+.root{position:absolute;width:250px;padding:26px 0 24px;background:#fff;border-radius:26px;border:1.5px solid rgba(255,0,49,.18);box-shadow:0 18px 40px rgba(255,0,49,.14),0 2px 6px rgba(17,17,17,.05);text-align:center}
+.root b{display:block;font-weight:800;font-size:96px;line-height:.95;letter-spacing:-2px;color:#FF0031;text-shadow:4px 4px 0 #FFC7D1}
+.root span{display:block;margin-top:12px;font-weight:700;font-size:20px;line-height:1.3;color:#111}
+/* branch label */
+.lab{position:absolute;height:52px;display:flex;align-items:center;gap:9px;padding:0 18px 0 12px;border-radius:14px;background:linear-gradient(135deg,#FF2A50,#FF0031 60%,#E0002B);color:#fff;font-weight:700;font-size:19px;white-space:nowrap;box-shadow:0 10px 20px rgba(255,0,49,.28)}
+.lab i{width:32px;height:32px;border-radius:9px;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center}
+.lab svg{width:19px;height:19px;stroke:#fff;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+/* leaf card */
+.card{position:absolute;background:#fff;border-radius:18px;border:1.5px solid rgba(255,0,49,.14);box-shadow:0 10px 24px rgba(17,17,17,.05),0 2px 5px rgba(17,17,17,.03)}
+.leaf{position:absolute;font-weight:500;font-size:19px;line-height:1;color:#1A1A1A;white-space:nowrap;display:flex;align-items:center}
+.leaf em{font-style:normal;color:#8A8A8A;font-weight:400;margin-left:6px;font-size:17px}
+/* footer */
+.foot{position:absolute;left:0;right:0;bottom:0;height:124px;background:#FF0031;display:flex;align-items:center;justify-content:space-between;padding:0 36px;color:#fff}
+.vr{flex:none;width:1.5px;height:62px;background:rgba(255,255,255,.35)}
+.me{display:flex;align-items:center;gap:14px}
+.av{flex:none;width:76px;height:76px;border-radius:50%;border:3px solid #fff;overflow:hidden;background:#fff}
+.av img{width:100%;height:100%;display:block}
+.nm b{display:block;font-weight:800;font-size:21px;line-height:1.2}
+.nm span{display:block;font-weight:500;font-size:15px;opacity:.92;margin-top:2px}
+.svc{font-size:16px;line-height:1.35;font-weight:500;width:262px}
+.svc b{font-weight:700}
+.rp{flex:none;background:#fff;color:#FF0031;font-weight:800;font-size:20px;letter-spacing:.5px;padding:12px 20px;border-radius:10px;display:flex;align-items:center;gap:9px;box-shadow:0 6px 14px rgba(17,17,17,.18)}
+.rp svg{width:22px;height:22px;stroke:#FF0031;fill:none;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+.ag{display:flex;align-items:center;gap:11px}
+.ag img{height:46px;display:block}
+.ag p{font-weight:800;font-size:18px;line-height:1.1;letter-spacing:.3px}
+</style></head><body>
+<div class="grid"></div>
+<div id="cards"></div>
+<svg id="scene" width="1080" height="1350" viewBox="0 0 1080 1350"></svg>
+<div id="map"></div>
+
+<div class="foot">
+ <div class="me"><div class="av"><img src="avatar.png"></div><div class="nm"><b>Shehroz Shafique</b><span>CEO of Permanent SEO</span></div></div>
+ <div class="vr"></div>
+ <div class="svc">Helping businesses build their <b>brand &amp; permanent growth</b></div>
+ <div class="rp"><svg viewBox="0 0 24 24"><path d="M4 9h13l-3-3"/><path d="M20 15H7l3 3"/></svg>REPOST</div>
+ <div class="vr"></div>
+ <div class="ag"><img src="logo-white.png"><p>PERMANENT<br>SEO</p></div>
+</div>
+
+<script>
+const IC={
+ doc:'<path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4M9 12h6M9 16h4"/>',
+ link:'<path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/>',
+ gear:'<circle cx="12" cy="12" r="3"/><path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3M5.3 5.3l2.1 2.1M16.6 16.6l2.1 2.1M5.3 18.7l2.1-2.1M16.6 7.4l2.1-2.1"/>',
+ pin:'<path d="M12 21s6.5-5.8 6.5-11a6.5 6.5 0 0 0-13 0c0 5.2 6.5 11 6.5 11z"/><circle cx="12" cy="10" r="2.3"/>',
+ tool:'<path d="M14.5 6.5a4 4 0 0 0 5 5l-8.5 8.5a2.1 2.1 0 0 1-3-3z"/><path d="M14.5 6.5l3-3"/>'
+};
+const G=[
+ {n:'On-Page SEO',i:'doc',l:['Title Tags','Meta Descriptions','Header Tags <em>(H1, H2, H3)</em>','Keyword Placement','Image Alt Text','Internal Linking','Schema Markup']},
+ {n:'Off-Page SEO',i:'link',l:['Backlink Building','Influencer Mentions','Guest Posts &amp; PR Outreach','Social Bookmarking','Forums &amp; Q&amp;A Sites']},
+ {n:'Technical SEO',i:'gear',l:['Site Speed','Mobile-Friendliness','XML Sitemap &amp; Robots.txt','Canonical URLs','Structured Data &amp; Rich Snippets','Crawling &amp; Indexing','HTTPS &amp; Security']},
+ {n:'Local SEO',i:'pin',l:['Google Business Profile','Local Listings <em>(Bing, Yelp, JustDial)</em>','NAP Consistency <em>(Name, Address, Phone)</em>','Reviews &amp; Ratings']},
+ {n:'SEO Tools',i:'tool',l:['Google Search Console','Ahrefs / Semrush / Ubersuggest','PageSpeed Insights / GTmetrix','Surfer SEO / Screaming Frog']},
+];
+const ROW=34,PAD=17,GAP=20,TOP=42;
+const RED='#FF0031',labX=300,labW=212,cardX=548,cardR=1046,brX=572,txtX=598;
+const outerX=92,innerX=148,rad=26;
+let y=TOP,svg='',html='',cards='',mids=[];
+G.forEach((g,k)=>{
+ const h=g.l.length*ROW+PAD*2, mid=y+h/2; mids.push(mid);
+ cards+=`<div class="card" style="left:${cardX}px;top:${y}px;width:${cardR-cardX}px;height:${h}px"></div>`;
+ // bracket inside card
+ const f=y+PAD+ROW/2, l=y+PAD+(g.l.length-1)*ROW+ROW/2;
+ svg+=`<path d="M${labX+labW} ${mid} H${brX}" stroke="${RED}" stroke-width="2.5" fill="none"/>`;
+ svg+=`<path d="M${brX} ${f+10} V${l-10}" stroke="${RED}" stroke-opacity=".35" stroke-width="2.5" fill="none"/>`;
+ g.l.forEach((t,j)=>{
+  const ly=y+PAD+j*ROW+ROW/2;
+  const d=j==0?`M${brX} ${f+10} Q${brX} ${ly} ${brX+10} ${ly} H${txtX-12}`:j==g.l.length-1?`M${brX} ${l-10} Q${brX} ${ly} ${brX+10} ${ly} H${txtX-12}`:`M${brX} ${ly} H${txtX-12}`;
+  svg+=`<path d="${d}" stroke="${RED}" stroke-opacity=".35" stroke-width="2.5" fill="none"/><circle cx="${txtX-10}" cy="${ly}" r="4.5" fill="${RED}"/>`;
+  html+=`<div class="leaf" style="left:${txtX+2}px;top:${ly-12}px;height:24px">${t}</div>`;
+ });
+ svg+=`<circle cx="${brX}" cy="${mid}" r="6" fill="#fff" stroke="${RED}" stroke-width="2.5"/>`;
+ html+=`<div class="lab" style="left:${labX}px;top:${mid-26}px;width:${labW}px"><i><svg viewBox="0 0 24 24">${IC[g.i]}</svg></i>${g.n}</div>`;
+ y+=h+GAP;
+});
+// trunks: outer line serves groups 0 & 4, inner line groups 1 & 3, middle group 2 straight from root
+const m=mids;
+const elbow=(x,yy,up)=>`M${x} ${up?yy+rad:yy-rad} Q${x} ${yy} ${x+rad} ${yy} H${labX}`;
+svg=`<g stroke="${RED}" stroke-width="3" fill="none" stroke-linecap="round">
+ <path d="M${outerX} ${m[0]+rad} V${m[4]-rad}"/><path d="${elbow(outerX,m[0],true)}"/><path d="${elbow(outerX,m[4],false)}"/>
+ <path d="M${innerX} ${m[1]+rad} V${m[3]-rad}"/><path d="${elbow(innerX,m[1],true)}"/><path d="${elbow(innerX,m[3],false)}"/>
+ <path d="M200 ${m[2]} H${labX}"/></g>`+svg;
+document.getElementById('scene').innerHTML=svg;
+document.getElementById('cards').innerHTML=cards;
+html+=`<div class="root" id="root" style="left:30px"><b>SEO</b><span>Search Engine<br>Optimization</span></div>`;
+document.getElementById('map').innerHTML=html;
+const r=document.getElementById('root');r.style.top=(m[2]-r.offsetHeight/2)+'px';
+</script>
+</body></html>
