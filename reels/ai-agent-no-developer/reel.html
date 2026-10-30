@@ -1,0 +1,402 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>AI Agent Reel</title>
+<style>
+@font-face{font-family:'PoppinsX';src:url(Poppins-ExtraBold.ttf);font-weight:800}
+:root{--bg:#09060F;--deep:#24103F;--purple:#7928CA;--glow:#A855F7;--ok:#22C55E}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1920px;background:var(--bg);overflow:hidden}
+#stage{position:relative;width:1080px;height:1920px;overflow:hidden;background:var(--bg);font-family:Inter,sans-serif;color:#fff}
+.abs{position:absolute}
+.scene{position:absolute;inset:0;opacity:0;transform-origin:540px 900px}
+.h{font-family:PoppinsX;font-weight:800;letter-spacing:-0.025em;line-height:1.04}
+.grad{background:linear-gradient(95deg,#E9D5FF 0%,#C084FC 35%,#A855F7 65%,#7928CA 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.center{left:0;width:1080px;text-align:center}
+.glass{background:linear-gradient(160deg,rgba(54,24,94,.72),rgba(24,12,42,.78));border:1.5px solid rgba(168,85,247,.38);box-shadow:0 30px 80px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.08)}
+.eyebrow{font:700 30px Inter;letter-spacing:.22em;color:#C084FC}
+.pill{display:inline-flex;align-items:center;gap:14px;padding:14px 30px;border-radius:999px;background:rgba(121,40,202,.22);border:1.5px solid rgba(168,85,247,.55);font:700 28px Inter;letter-spacing:.16em;color:#E9D5FF}
+.pill .dots{display:flex;gap:8px}.pill .dots i{width:12px;height:12px;border-radius:50%;background:rgba(255,255,255,.25)}
+.pill .dots i.on{background:#A855F7;box-shadow:0 0 12px #A855F7}
+/* captions */
+#cap{position:absolute;left:60px;width:960px;top:1500px;text-align:center;font-family:PoppinsX;font-size:62px;line-height:1.15;letter-spacing:-.01em}
+#cap span{display:inline-block;margin:0 9px;color:#fff;text-shadow:0 4px 18px rgba(0,0,0,.9),0 0 2px #000;transition:none}
+#cap span.on{color:#fff;background:linear-gradient(180deg,#A855F7,#7928CA);padding:0 14px;border-radius:14px;box-shadow:0 0 30px rgba(168,85,247,.65);text-shadow:none}
+/* window */
+.win{border-radius:34px;overflow:hidden}
+.titlebar{height:72px;display:flex;align-items:center;padding:0 28px;border-bottom:1px solid rgba(168,85,247,.25);background:rgba(9,6,15,.35)}
+.titlebar i{width:16px;height:16px;border-radius:50%;margin-right:10px;background:rgba(255,255,255,.22)}
+.titlebar b{flex:1;text-align:center;font:600 26px Inter;color:rgba(255,255,255,.75);margin-right:66px}
+.row{display:flex;align-items:center;gap:20px}
+.av{width:62px;height:62px;border-radius:50%;flex:none;display:grid;place-items:center;font:700 26px Inter}
+.muted{color:rgba(255,255,255,.55)}
+.cell{position:absolute;height:80px;display:flex;align-items:center;padding:0 16px;font:500 22px Inter;border-right:1px solid rgba(255,255,255,.08);border-bottom:1px solid rgba(255,255,255,.08);white-space:nowrap;overflow:hidden}
+.bub{position:absolute;padding:22px 30px;border-radius:30px;font:500 32px Inter;max-width:640px}
+.card{position:absolute;width:560px;height:400px;border-radius:26px;padding:30px}
+.task{position:absolute;left:110px;width:860px;height:112px;border-radius:28px;display:flex;align-items:center;gap:26px;padding:0 30px;font:600 36px Inter}
+.ico{width:64px;height:64px;border-radius:18px;display:grid;place-items:center;background:rgba(168,85,247,.18);flex:none}
+.chk{margin-left:auto;width:52px;height:52px;border-radius:50%;border:3px solid rgba(255,255,255,.25);display:grid;place-items:center}
+/* n8n canvas */
+#canvas{left:50px;top:610px;width:980px;height:820px;border-radius:30px;overflow:hidden;background:#141019;border:1.5px solid rgba(168,85,247,.35)}
+#canvas .grid{position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.13) 1.6px,transparent 1.6px);background-size:30px 30px}
+.node{position:absolute;background:#2A2333;border:3px solid #4B4258;border-radius:18px;display:grid;place-items:center}
+.node.trig{border-radius:65px 18px 18px 65px}
+.node .lbl{position:absolute;top:100%;margin-top:12px;left:50%;transform:translateX(-50%);font:600 22px Inter;color:#E5E1EA;text-align:center;white-space:nowrap;line-height:1.25}
+.node .badge{position:absolute;right:-16px;top:-16px;width:40px;height:40px;border-radius:50%;background:var(--ok);display:grid;place-items:center;opacity:0;box-shadow:0 0 18px rgba(34,197,94,.7)}
+.sub{position:absolute;width:96px;height:96px;border-radius:50%;background:#2A2333;border:3px solid #4B4258;display:grid;place-items:center}
+.sub .lbl{position:absolute;top:100%;margin-top:10px;left:50%;transform:translateX(-50%);font:600 20px Inter;color:#C9C3D1;text-align:center;white-space:nowrap;line-height:1.2}
+.port{position:absolute;width:16px;height:16px;border-radius:50%;background:#8E86A0}
+.diam{position:absolute;width:16px;height:16px;background:#8E86A0;transform:rotate(45deg)}
+</style></head>
+<body><div id="stage">
+  <!-- background -->
+  <div id="g1" class="abs" style="width:1100px;height:1100px;border-radius:50%;background:radial-gradient(circle,rgba(121,40,202,.55),rgba(121,40,202,0) 65%)"></div>
+  <div id="g2" class="abs" style="width:1200px;height:1200px;border-radius:50%;background:radial-gradient(circle,rgba(36,16,63,.95),rgba(36,16,63,0) 65%)"></div>
+  <div id="g3" class="abs" style="width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(168,85,247,.28),rgba(168,85,247,0) 65%)"></div>
+  <div id="gridbg" class="abs" style="inset:0;background-image:linear-gradient(rgba(168,85,247,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(168,85,247,.06) 1px,transparent 1px);background-size:90px 90px;-webkit-mask-image:radial-gradient(ellipse at 50% 45%,#000 20%,transparent 75%)"></div>
+  <div id="particles"></div>
+  <div id="ctabg" class="abs" style="inset:0;opacity:0;background:radial-gradient(ellipse 120% 70% at 50% 42%,#9A3FF0 0%,#7928CA 30%,#3A1468 62%,#09060F 100%)">
+    <div id="rays" class="abs" style="left:-460px;top:-160px;width:2000px;height:2000px;background:repeating-conic-gradient(from 0deg at 50% 50%,rgba(255,255,255,.07) 0deg 6deg,rgba(255,255,255,0) 6deg 18deg);-webkit-mask-image:radial-gradient(circle,#000 10%,transparent 60%)"></div>
+  </div>
+
+  <!-- progress + logo -->
+  <div class="abs" style="left:60px;top:46px;width:960px;height:8px;border-radius:8px;background:rgba(255,255,255,.12)"><div id="prog" style="height:100%;width:0;border-radius:8px;background:linear-gradient(90deg,#7928CA,#A855F7);box-shadow:0 0 14px #A855F7"></div></div>
+  <div id="logo" class="abs" style="left:0;width:1080px;top:86px;display:flex;justify-content:center"></div>
+
+  <!-- S1 HOOK -->
+  <div id="s1" class="scene">
+    <div id="orb" class="abs" style="left:390px;top:300px;width:300px;height:300px">
+      <div id="orbGlow" class="abs" style="inset:-160px;border-radius:50%;background:radial-gradient(circle,rgba(168,85,247,.55),rgba(121,40,202,0) 62%)"></div>
+      <div id="ring1" class="abs" style="inset:-38px;border-radius:50%;border:2.5px solid rgba(192,132,252,.55);border-top-color:transparent;border-left-color:transparent"></div>
+      <div id="ring2" class="abs" style="inset:-78px;border-radius:50%;border:2px dashed rgba(168,85,247,.35)"></div>
+      <div class="abs" style="inset:0;border-radius:50%;background:radial-gradient(circle at 38% 32%,#fff 0%,#E9D5FF 12%,#A855F7 42%,#7928CA 68%,#24103F 100%);box-shadow:0 0 90px rgba(168,85,247,.9),inset 0 -20px 50px rgba(36,16,63,.8)"></div>
+      <svg class="abs" style="left:95px;top:95px" width="110" height="110" viewBox="0 0 24 24"><path id="spark" d="M12 2l2.2 6.3L20.5 10.5 14.2 12.7 12 19l-2.2-6.3L3.5 10.5l6.3-2.2z" fill="#fff" opacity=".95"/></svg>
+      <div id="sat1" class="abs" style="width:22px;height:22px;border-radius:50%;background:#E9D5FF;box-shadow:0 0 20px #A855F7"></div>
+      <div id="sat2" class="abs" style="width:14px;height:14px;border-radius:50%;background:#C084FC;box-shadow:0 0 16px #A855F7"></div>
+    </div>
+    <div id="h1a" class="abs center h" style="top:760px;font-size:100px">Your First</div>
+    <div id="h1b" class="abs center h" style="top:868px;font-size:168px;filter:drop-shadow(0 0 40px rgba(168,85,247,.55))"><span class="grad">AI Agent</span></div>
+    <div id="h1c" class="abs center h" style="top:1066px;font-size:100px">Doesn’t Need a</div>
+    <div id="h1d" class="abs center h" style="top:1180px;font-size:128px"><span id="dev" style="position:relative;display:inline-block">Developer<i id="strike" style="position:absolute;left:-14px;top:52%;height:16px;width:0;border-radius:10px;background:linear-gradient(90deg,#A855F7,#E9D5FF);box-shadow:0 0 24px #A855F7"></i></span></div>
+    <div id="nocode" class="abs center" style="top:1370px"><span class="pill" style="letter-spacing:.08em">NO CODE&nbsp;&nbsp;·&nbsp;&nbsp;NO DEV TEAM&nbsp;&nbsp;·&nbsp;&nbsp;JUST n8n</span></div>
+  </div>
+
+  <!-- S2 PAIN -->
+  <div id="s2" class="scene">
+    <div id="p_eb" class="abs center eyebrow" style="top:250px">SOUND FAMILIAR?</div>
+    <div id="p_h" class="abs center h" style="top:305px;font-size:94px">Still Doing It All<br><span class="grad">By Hand?</span></div>
+    <div id="win" class="abs glass win" style="left:70px;top:560px;width:940px;height:780px">
+      <div class="titlebar"><i></i><i></i><i></i><b id="wtitle">Inbox → Leads.xlsx</b></div>
+      <div id="wbody" class="abs" style="left:0;top:72px;width:940px;height:708px">
+        <div id="pa" class="abs" style="inset:0"></div>
+        <div id="pb" class="abs" style="inset:0"></div>
+        <div id="pc" class="abs" style="inset:0"></div>
+      </div>
+    </div>
+    <div id="pd" class="abs" style="left:70px;top:560px;width:940px;height:780px">
+      <svg id="clock" class="abs" style="left:380px;top:20px" width="180" height="180" viewBox="0 0 100 100">
+        <circle cx="50" cy="50" r="44" fill="rgba(121,40,202,.25)" stroke="#A855F7" stroke-width="5"/>
+        <line id="hand1" x1="50" y1="50" x2="50" y2="18" stroke="#fff" stroke-width="6" stroke-linecap="round"/>
+        <line id="hand2" x1="50" y1="50" x2="72" y2="50" stroke="#C084FC" stroke-width="6" stroke-linecap="round"/>
+        <circle cx="50" cy="50" r="6" fill="#fff"/></svg>
+      <div class="abs center h" style="left:0;width:940px;top:200px;font-size:300px;line-height:1"><span id="hrs" class="grad">0</span></div>
+      <div class="abs h" style="left:0;width:940px;text-align:center;top:520px;font-size:64px">hours / week</div>
+      <div class="abs muted" style="left:0;width:940px;text-align:center;top:610px;font:500 38px Inter">lost to copy-paste busywork</div>
+      <div id="machine" class="abs" style="left:0;width:940px;top:690px;text-align:center"><span class="pill" style="font-size:30px;letter-spacing:.04em;background:linear-gradient(90deg,#7928CA,#A855F7);color:#fff;border:none;box-shadow:0 0 40px rgba(168,85,247,.6)">
+        <svg width="34" height="34" viewBox="0 0 24 24"><path d="M12 2l2.2 6.3L20.5 10.5 14.2 12.7 12 19l-2.2-6.3L3.5 10.5l6.3-2.2z" fill="#fff"/></svg>An AI agent could do this</span></div>
+    </div>
+    <div id="cursor" class="abs" style="left:0;top:0"><svg width="46" height="56" viewBox="0 0 23 28"><path d="M2 2v21l5.6-5.2 3.6 8.2 3.6-1.6-3.5-8H19z" fill="#fff" stroke="#09060F" stroke-width="1.6"/></svg></div>
+  </div>
+
+  <!-- S3 STEP 1 -->
+  <div id="s3" class="scene">
+    <div id="st1p" class="abs center" style="top:240px"><span class="pill">STEP 01 <span class="dots"><i class="on"></i><i></i><i></i></span></span></div>
+    <div id="st1h" class="abs center h" style="top:330px;font-size:100px">Pick <span class="grad">One</span><br>Repetitive Task</div>
+    <div id="tasks"></div>
+    <div id="hand" class="abs" style="left:0;top:0"><svg width="46" height="56" viewBox="0 0 23 28"><path d="M2 2v21l5.6-5.2 3.6 8.2 3.6-1.6-3.5-8H19z" fill="#fff" stroke="#09060F" stroke-width="1.6"/></svg></div>
+    <div id="st1n" class="abs center" style="top:1360px;font:600 36px Inter;color:#E9D5FF">Frequent · Rule-based · Boring&nbsp;=&nbsp;<b style="color:#fff">perfect first agent</b></div>
+  </div>
+
+  <!-- S4 STEP 2 -->
+  <div id="s4" class="scene">
+    <div id="st2p" class="abs center" style="top:240px"><span class="pill">STEP 02 <span class="dots"><i class="on"></i><i class="on"></i><i></i></span></span></div>
+    <div id="st2h" class="abs center h" style="top:330px;font-size:100px">Define <span class="grad">Inputs</span><br>&amp; <span class="grad">Outputs</span></div>
+    <div id="inCard" class="abs glass" style="left:110px;top:610px;width:860px;height:290px;border-radius:30px;padding:28px 36px">
+      <div class="eyebrow" style="font-size:26px">INPUT · WHAT COMES IN</div>
+      <div style="margin-top:18px;display:grid;grid-template-columns:150px 1fr;row-gap:14px;font:500 32px Inter">
+        <span class="muted">Name</span><span id="f1">Sarah Khan</span>
+        <span class="muted">Email</span><span id="f2">sarah@acmekits.co</span>
+        <span class="muted">Message</span><span id="f3">“Need 50 starter kits by June”</span>
+      </div>
+    </div>
+    <svg class="abs" style="left:0;top:900px" width="1080" height="290">
+      <line x1="540" y1="0" x2="540" y2="290" stroke="rgba(168,85,247,.35)" stroke-width="4" stroke-dasharray="10 10"/>
+    </svg>
+    <div id="flow1" class="abs" style="width:22px;height:22px;border-radius:50%;background:#E9D5FF;box-shadow:0 0 22px #A855F7"></div>
+    <div id="flow2" class="abs" style="width:22px;height:22px;border-radius:50%;background:#E9D5FF;box-shadow:0 0 22px #A855F7"></div>
+    <div id="aiNode" class="abs" style="left:300px;top:955px;width:480px;height:150px;border-radius:80px;background:linear-gradient(90deg,#7928CA,#A855F7);display:flex;align-items:center;gap:22px;padding:0 34px;box-shadow:0 0 60px rgba(168,85,247,.6)">
+      <div style="width:96px;height:96px;border-radius:50%;background:radial-gradient(circle at 38% 32%,#fff,#E9D5FF 20%,#C084FC 55%,#7928CA);display:grid;place-items:center;flex:none"><svg width="52" height="52" viewBox="0 0 24 24"><path d="M12 2l2.2 6.3L20.5 10.5 14.2 12.7 12 19l-2.2-6.3L3.5 10.5l6.3-2.2z" fill="#7928CA"/></svg></div>
+      <div><div class="h" style="font-size:46px">AI Agent</div><div style="font:600 24px Inter;opacity:.85">classify · score · route</div></div>
+    </div>
+    <div id="outCard" class="abs glass" style="left:110px;top:1160px;width:860px;height:290px;border-radius:30px;padding:28px 36px">
+      <div class="eyebrow" style="font-size:26px">OUTPUT · WHAT COMES OUT</div>
+      <div id="outs" style="margin-top:20px;display:flex;flex-direction:column;gap:16px;font:600 32px Inter"></div>
+    </div>
+  </div>
+
+  <!-- S5 STEP 3 -->
+  <div id="s5" class="scene">
+    <div id="st3p" class="abs center" style="top:240px"><span class="pill">STEP 03 <span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i></span></span></div>
+    <div id="st3h" class="abs center h" style="top:330px;font-size:94px">Build &amp; Test an<br><span class="grad">n8n Workflow</span></div>
+    <div id="canvas" class="abs">
+      <div class="grid"></div>
+      <div class="abs" style="left:0;top:0;width:980px;height:84px;display:flex;align-items:center;padding:0 30px;gap:16px;background:#1C1724;border-bottom:1px solid #2F2838">
+        <span style="font:700 28px Inter">Lead Qualifier Agent</span>
+        <span style="font:600 20px Inter;padding:6px 14px;border-radius:8px;background:rgba(168,85,247,.2);color:#C084FC">AI</span>
+        <span style="margin-left:auto;font:600 22px Inter;color:#9F98AB" id="activeTxt">Inactive</span>
+        <span id="toggle" style="width:64px;height:36px;border-radius:20px;background:#3A3344;position:relative"><i id="knob" style="position:absolute;top:4px;left:4px;width:28px;height:28px;border-radius:50%;background:#fff"></i></span>
+      </div>
+      <svg id="edges" class="abs" style="left:0;top:84px" width="980" height="736"></svg>
+      <div id="nodes" class="abs" style="left:0;top:84px;width:980px;height:736px"></div>
+      <div id="testBtn" class="abs" style="left:340px;top:716px;width:300px;height:76px;border-radius:16px;background:linear-gradient(90deg,#7928CA,#A855F7);display:flex;align-items:center;justify-content:center;gap:14px;font:700 28px Inter;box-shadow:0 10px 30px rgba(121,40,202,.5)">
+        <svg width="30" height="30" viewBox="0 0 24 24"><path d="M9 2h6M10 2v6L4.5 18.5A2.3 2.3 0 0 0 6.6 22h10.8a2.3 2.3 0 0 0 2.1-3.5L14 8V2" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Test workflow</div>
+      <div id="toast" class="abs" style="right:26px;top:104px;padding:20px 28px;border-radius:16px;background:#14301F;border:2px solid var(--ok);display:flex;gap:14px;align-items:center;font:600 26px Inter;color:#DCFCE7;box-shadow:0 10px 30px rgba(0,0,0,.4)">
+        <svg width="30" height="30" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#22C55E"/><path d="M7 12.5l3.2 3.2L17 9" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Workflow executed successfully</div>
+      <div id="cur3" class="abs" style="left:0;top:0"><svg width="46" height="56" viewBox="0 0 23 28"><path d="M2 2v21l5.6-5.2 3.6 8.2 3.6-1.6-3.5-8H19z" fill="#fff" stroke="#09060F" stroke-width="1.6"/></svg></div>
+    </div>
+  </div>
+
+  <!-- S6 CTA -->
+  <div id="s6" class="scene">
+    <div id="ctaLogo" class="abs" style="left:0;width:1080px;top:250px;display:flex;justify-content:center"></div>
+    <div id="c1" class="abs center h" style="top:520px;font-size:130px;text-shadow:0 10px 40px rgba(0,0,0,.35)">Comment</div>
+    <div id="cbox" class="abs" style="left:90px;top:720px;width:900px;height:230px;border-radius:120px;background:#fff;display:flex;align-items:center;padding:0 30px;gap:28px;box-shadow:0 30px 90px rgba(9,6,15,.55),0 0 0 10px rgba(255,255,255,.18)">
+      <div style="width:150px;height:150px;border-radius:50%;background:linear-gradient(135deg,#A855F7,#24103F);flex:none;display:grid;place-items:center"><svg width="76" height="76" viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z" fill="none" stroke="#fff" stroke-width="2.2" stroke-linejoin="round"/></svg></div>
+      <div class="h" style="font-size:150px;color:#7928CA;flex:1;letter-spacing:.01em;display:flex;align-items:center"><span id="typed"></span><i id="caret" style="display:inline-block;width:9px;height:130px;background:#A855F7;margin-left:10px;border-radius:4px"></i></div>
+    </div>
+    <div id="c2" class="abs center h" style="top:1010px;font-size:96px">for the <span style="position:relative;display:inline-block">Course List<i id="uline" style="position:absolute;left:0;bottom:-8px;height:14px;width:0;border-radius:8px;background:#fff;box-shadow:0 0 24px #fff"></i></span></div>
+    <div id="c3" class="abs center" style="top:1220px;font:600 40px Inter;color:#F3E8FF">Drop it in the comments below</div>
+    <svg id="chev" class="abs" style="left:490px;top:1300px" width="100" height="100" viewBox="0 0 24 24"><path d="M5 8l7 7 7-7" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <div id="bubbles"></div>
+  </div>
+
+  <div id="cap"></div>
+</div>
+<script src="captions.js"></script>
+<script>
+const E=id=>document.getElementById(id);
+const cl=(x,a=0,b=1)=>Math.max(a,Math.min(b,x));
+const P=(t,s,d)=>cl((t-s)/d);
+const eo=x=>1-Math.pow(1-x,3);
+const eb=x=>{const c1=1.9,c3=c1+1;return 1+c3*Math.pow(x-1,3)+c1*Math.pow(x-1,2)};
+const eio=x=>x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2;
+const lerp=(a,b,k)=>a+(b-a)*k;
+function st(el,o,x=0,y=0,s=1,b=0){el.style.opacity=o;el.style.transform=`translate(${x}px,${y}px) scale(${s})`;el.style.filter=b>.05?`blur(${b}px)`:'none'}
+function pop(el,t,s,d=.45,dy=50){const k=P(t,s,d);st(el,eo(k),0,(1-eo(k))*dy,.86+.14*eb(k),(1-k)*10)}
+function slide(el,t,s,d=.45,dx=120){const k=P(t,s,d);st(el,eo(k),(1-eo(k))*dx,0,1)}
+const SPARK='<path d="M12 2l2.2 6.3L20.5 10.5 14.2 12.7 12 19l-2.2-6.3L3.5 10.5l6.3-2.2z" fill="#C084FC"/>';
+const svg=(d,c='#C084FC',sw=2.2)=>`<svg width="36" height="36" viewBox="0 0 24 24"><path d="${d}" fill="none" stroke="${c}" stroke-width="${sw}" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+
+/* ---------- logo (vector rebuild of the Bundles and Kits mark) ---------- */
+function logoHTML(scale){return `<div style="display:flex;align-items:center;gap:${14*scale}px;transform-origin:center">
+  <svg width="${62*scale}" height="${66*scale}" viewBox="0 0 62 66"><path d="M20 20v-6a11 11 0 0 1 22 0v6" fill="none" stroke="#C084FC" stroke-width="5" stroke-linecap="round"/>
+  <rect x="6" y="18" width="50" height="44" rx="9" fill="#8B3DFF"/><rect x="20" y="30" width="22" height="20" rx="4" fill="none" stroke="#E9D5FF" stroke-width="3.5"/><path d="M25 39l4 4 7-8" fill="none" stroke="#E9D5FF" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  <div style="font-family:PoppinsX;line-height:.98;font-size:${30*scale}px;letter-spacing:-.01em"><div>Bundles</div><div style="color:#A855F7">and Kits</div></div></div>`}
+E('logo').innerHTML=logoHTML(1.15);E('ctaLogo').innerHTML=logoHTML(1.7);
+
+/* ---------- particles ---------- */
+let seed=11;const rnd=()=>(seed=(seed*16807)%2147483647)/2147483647;
+const parts=[];for(let i=0;i<46;i++){const d=document.createElement('div');const sz=2+rnd()*5;d.style.cssText=`position:absolute;width:${sz}px;height:${sz}px;border-radius:50%;background:${rnd()>.5?'#C084FC':'#fff'};box-shadow:0 0 ${sz*3}px #A855F7`;E('particles').appendChild(d);parts.push({d,x:rnd()*1080,y:rnd()*1920,v:15+rnd()*40,ph:rnd()*6.28,a:.2+rnd()*.6})}
+
+/* ---------- S2 content ---------- */
+const emails=[['SK','Sarah Khan','New order enquiry','#7928CA'],['JM','James Moore','Bulk pricing?','#5B21B6'],['AL','Aisha Latif','Kit for 20 people','#9333EA'],['TR','Tom Reyes','Quote request','#6D28D9']];
+E('pa').innerHTML=emails.map((e,i)=>`<div id="em${i}" class="abs row" style="left:24px;top:${26+i*160}px;width:380px;height:140px;padding:0 20px;border-radius:22px;background:rgba(255,255,255,.04)">
+  <div class="av" style="background:${e[3]}">${e[0]}</div><div><div style="font:700 26px Inter">${e[1]}</div><div class="muted" style="font:500 22px Inter;margin-top:4px">${e[2]}</div></div></div>`).join('')+
+ `<div class="abs" style="left:430px;top:26px;width:486px;height:660px;border-radius:18px;background:rgba(9,6,15,.45);overflow:hidden">
+   ${['Name','Email','Status'].map((h,j)=>`<div class="cell" style="left:${[0,170,370][j]}px;width:${[170,200,116][j]}px;top:0;height:64px;font-weight:700;color:#C084FC;background:rgba(121,40,202,.18)">${h}</div>`).join('')}
+   ${[0,1,2,3,4,5,6].map(i=>[0,1,2].map(j=>`<div class="cell" id="c${i}${j}" style="left:${[0,170,370][j]}px;width:${[170,200,116][j]}px;top:${64+i*82}px"></div>`).join('')).join('')}
+ </div>
+ <div id="chip" class="abs pill" style="padding:8px 18px;font-size:22px;letter-spacing:.04em;background:#7928CA;color:#fff;border:none">Ctrl + C</div>`;
+const cellTxt=[['Sarah K.','sarah@acme…','New'],['James M.','james@bo…','New'],['Aisha L.','aisha@kit…','New'],['Tom R.','tom@reye…','New']];
+const qs=[['Hi! What are your prices?','SK'],['How much is the starter kit?','JM'],['what’s the price??','AL'],['Price list please 🙏','TR']];
+E('pb').innerHTML=qs.map((q,i)=>`<div id="q${i}" class="abs row" style="left:30px;top:${30+i*124}px"><div class="av" style="background:${emails[i][3]};width:56px;height:56px;font-size:22px">${q[1]}</div><div class="bub" style="position:relative;background:rgba(255,255,255,.09);border-top-left-radius:8px">${q[0].replace('🙏','')}</div></div>`).join('')+
+ `<div id="reply" class="abs bub" style="right:30px;top:540px;background:linear-gradient(90deg,#7928CA,#A855F7);border-bottom-right-radius:8px">Hi! Our prices are<span id="rdots">…</span></div>
+  <div id="qcount" class="abs pill" style="right:30px;top:30px;padding:10px 22px;font-size:24px;letter-spacing:.04em">Asked <b id="qn" style="color:#fff;margin:0 6px">0</b>× this week</div>`;
+E('pc').innerHTML=[0,1,2,3].map(i=>`<div id="rp${i}" class="card glass" style="left:${110+i*36}px;top:${70+i*44}px">
+  <div class="row" style="gap:14px"><div class="ico" style="width:52px;height:52px">${svg('M4 20V10M10 20V4M16 20v-7M22 20H2')}</div><div><div style="font:700 30px Inter">Weekly Report</div><div class="muted" style="font:500 22px Inter">Week ${14+i} · manual export</div></div></div>
+  <div style="display:flex;align-items:flex-end;gap:22px;height:190px;margin-top:30px;padding:0 10px">${[60,110,80,150,120,170].map(h=>`<i style="flex:1;height:${h}px;border-radius:10px 10px 4px 4px;background:linear-gradient(180deg,#A855F7,#7928CA)"></i>`).join('')}</div>
+  <div class="muted" style="font:500 20px Inter;margin-top:18px">Copy of Copy of Report_FINAL_v${3+i}.xlsx</div></div>`).join('')+
+  `<div id="again" class="abs" style="left:0;width:940px;top:600px;text-align:center"><span class="pill" style="font-size:28px;letter-spacing:.06em">↻&nbsp; EVERY MONDAY. AGAIN.</span></div>`;
+
+/* ---------- S3 tasks ---------- */
+const TASKS=[['Reply to support emails','M4 6h16v12H4zM4 7l8 6 8-6'],['Sort & qualify new leads','M3 5h18l-7 8v6l-4 2v-8z'],['Update the CRM by hand','M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM4 21a8 8 0 0 1 16 0'],['Build the weekly report','M4 20V10M10 20V4M16 20v-7M22 20H2'],['Chase invoice reminders','M6 2h9l5 5v15H6zM14 2v6h6M9 13h8M9 17h6']];
+E('tasks').innerHTML=TASKS.map((k,i)=>`<div id="tk${i}" class="task glass" style="top:${640+i*136}px"><div class="ico">${svg(k[1])}</div><span>${k[0]}</span><div class="chk" id="ck${i}"><svg width="30" height="30" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>`).join('')+
+ `<div id="tag" class="abs pill" style="left:742px;top:742px;padding:8px 18px;font-size:22px;letter-spacing:.08em;background:#A855F7;color:#fff;border:none;box-shadow:0 0 24px #A855F7">START HERE</div>`;
+
+/* ---------- S4 outputs ---------- */
+const OUTS=['Lead score: <b style="color:#C084FC">92 · HOT</b>','Contact added to CRM','Sales team alerted in chat'];
+E('outs').innerHTML=OUTS.map((o,i)=>`<div id="o${i}" class="row" style="gap:18px"><span style="width:44px;height:44px;border-radius:50%;background:#7928CA;display:grid;place-items:center;flex:none"><svg width="26" height="26" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>${o}</div>`).join('');
+
+/* ---------- S5 n8n canvas ---------- */
+const ICON={bolt:'M13 2L4 14h7l-1 8 9-12h-7z',crm:'M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM4 21a8 8 0 0 1 16 0',chat:'M4 5h16v11H9l-5 4z',db:'M4 6c0-2 16-2 16 0v12c0 2-16 2-16 0zM4 6c0 2 16 2 16 0M4 12c0 2 16 2 16 0'};
+const big=(d,c='#fff')=>`<svg width="60" height="60" viewBox="0 0 24 24"><path d="${d}" fill="none" stroke="${c}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+const NODES=[
+ {id:'n0',cls:'node trig',x:50,y:210,w:140,h:140,html:big(ICON.bolt,'#FBBF24'),lbl:'On form<br>submission'},
+ {id:'n1',cls:'node',x:270,y:210,w:280,h:140,html:`<div class="row" style="gap:14px"><svg width="56" height="56" viewBox="0 0 24 24">${SPARK}</svg><div><div style="font:700 30px Inter">AI Agent</div><div class="muted" style="font:500 20px Inter">Tools Agent</div></div></div>`,lbl:''},
+ {id:'n2',cls:'node',x:730,y:90,w:140,h:140,html:big(ICON.crm,'#C084FC'),lbl:'Create<br>contact'},
+ {id:'n3',cls:'node',x:730,y:350,w:140,h:140,html:big(ICON.chat,'#C084FC'),lbl:'Send<br>message'},
+ {id:'n4',cls:'sub',x:282,y:450,w:96,h:96,html:`<svg width="46" height="46" viewBox="0 0 24 24">${SPARK.replace('#C084FC','#fff')}</svg>`,lbl:'Chat Model'},
+ {id:'n5',cls:'sub',x:442,y:450,w:96,h:96,html:big(ICON.db,'#fff').replace(/60/g,'44'),lbl:'Memory'}];
+E('nodes').innerHTML=NODES.map(n=>`<div id="${n.id}" class="${n.cls}" style="left:${n.x}px;top:${n.y}px;width:${n.w}px;height:${n.h}px">${n.html}${n.lbl?`<div class="lbl">${n.lbl}</div>`:''}${n.cls.startsWith('node')?`<div class="badge"><svg width="24" height="24" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>`:''}</div>`).join('')+
+ `<div id="spin" class="abs" style="left:262px;top:202px;width:296px;height:156px;border-radius:22px;background:conic-gradient(from 0deg,#A855F7,transparent 40%,#A855F7 80%,transparent);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;padding:5px;opacity:0"></div>`;
+const EDGES=[['e0','M190 280 C230 280 230 280 270 280',0],['e1','M550 280 C640 280 640 160 730 160',1],['e2','M550 280 C640 280 640 420 730 420',1],['e3','M330 350 C330 400 330 400 330 450',2],['e4','M490 350 C490 400 490 400 490 450',2]];
+E('edges').innerHTML=EDGES.map(e=>`<path id="${e[0]}" d="${e[1]}" fill="none" stroke="#8E86A0" stroke-width="4" ${e[2]==2?'stroke-dasharray="8 8"':''}/>`).join('')+
+ `<g id="itemLbls" font-family="Inter" font-weight="700" font-size="20" fill="#22C55E"><text id="il0" x="204" y="266">1 item</text><text id="il1" x="610" y="196">1 item</text><text id="il2" x="610" y="402">1 item</text></g>`+
+ `<circle id="pk0" r="10" fill="#E9D5FF"/><circle id="pk1" r="10" fill="#E9D5FF"/><circle id="pk2" r="10" fill="#E9D5FF"/>`;
+const PK=[E('pk0'),E('pk1'),E('pk2')];PK.forEach(p=>p.style.filter='drop-shadow(0 0 8px #A855F7)');
+
+/* ---------- S6 bubbles ---------- */
+const BUBS=[];for(let i=0;i<9;i++){const d=document.createElement('div');d.className='abs pill';d.style.cssText+=';padding:12px 24px;font-size:28px;letter-spacing:.06em;background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.35);color:#fff';d.textContent='AGENT';E('bubbles').appendChild(d);BUBS.push({d,x:60+((i*137)%860),s:30.5+i*.22,v:220+(i%3)*60})}
+
+/* ---------- captions ---------- */
+const capEl=E('cap');let capIdx=-1;
+function captions(t){
+  let idx=-1;for(let i=0;i<CAPTIONS.length;i++){const c=CAPTIONS[i];if(t>=c[0].s-.05&&t<c[c.length-1].hold)idx=i}
+  const hide=t<3.05||t>=29.95;
+  if(idx<0||hide){capEl.style.opacity=0;return}
+  const c=CAPTIONS[idx];
+  if(idx!==capIdx){capEl.innerHTML=c.map(w=>`<span>${w.w}</span>`).join('');capIdx=idx}
+  const k=P(t,c[0].s-.05,.18);capEl.style.opacity=1;capEl.style.transform=`translateY(${(1-eo(k))*24}px) scale(${.92+.08*eo(k)})`;
+  [...capEl.children].forEach((s,i)=>s.classList.toggle('on',t>=c[i].s-.03&&(i==c.length-1||t<c[i+1].s-.03)))
+}
+
+/* ---------- master render ---------- */
+const SC=[['s1',0,3],['s2',3,12],['s3',12,18],['s4',18,24],['s5',24,30],['s6',30,99]];
+function render(t){
+  // background
+  E('g1').style.transform=`translate(${-260+140*Math.sin(t*.35)}px,${-120+110*Math.cos(t*.27)}px)`;
+  E('g2').style.transform=`translate(${300+90*Math.cos(t*.22)}px,${1000+90*Math.sin(t*.3)}px)`;
+  E('g3').style.transform=`translate(${520+200*Math.sin(t*.5+1)}px,${720+260*Math.cos(t*.4)}px)`;
+  E('gridbg').style.backgroundPosition=`0 ${t*18}px`;
+  parts.forEach(p=>{const y=((p.y-t*p.v)%1920+1920)%1920;p.d.style.transform=`translate(${p.x+18*Math.sin(t*.8+p.ph)}px,${y}px)`;p.d.style.opacity=p.a*(.55+.45*Math.sin(t*2+p.ph))});
+  E('prog').style.width=(cl(t/33)*100)+'%';
+  const ctaK=eo(P(t,29.8,.45));E('ctabg').style.opacity=ctaK;E('rays').style.transform=`rotate(${t*6}deg)`;
+  st(E('logo'),1-ctaK,0,0,1);
+
+  // scene envelopes
+  SC.forEach(([id,s,e])=>{const el=E(id);const ki=s===0?1:P(t,s-.15,.3),ko=P(t,e-.15,.3);const o=eo(ki)*(1-eo(ko));
+    el.style.display=o<=0.001?'none':'block';el.style.opacity=o;el.style.transform=`scale(${(0.93+.07*eo(ki))*(1+.07*eo(ko))})`;
+    const b=(1-ki)*14+ko*14;el.style.filter=b>.05?`blur(${b}px)`:'none'});
+
+  /* S1 */
+  if(t<3.3){
+    const ok=P(t,0,.6);st(E('orb'),eo(ok),0,0,.6+.4*eb(ok)+.03*Math.sin(t*4));
+    E('ring1').style.transform=`rotate(${t*140}deg)`;E('ring2').style.transform=`rotate(${-t*50}deg)`;
+    E('orbGlow').style.opacity=.7+.3*Math.sin(t*5);
+    E('sat1').style.transform=`translate(${139+185*Math.cos(t*2.4)}px,${139+185*Math.sin(t*2.4)}px)`;
+    E('sat2').style.transform=`translate(${143+228*Math.cos(-t*1.6+2)}px,${143+228*Math.sin(-t*1.6+2)}px)`;
+    pop(E('h1a'),t,.15);pop(E('h1b'),t,.55,.5,70);pop(E('h1c'),t,1.62);pop(E('h1d'),t,2.05,.4);
+    const sk=eio(P(t,2.45,.35));E('strike').style.width=(sk*(E('dev').offsetWidth+28))+'px';
+    E('dev').style.color=`rgba(255,255,255,${1-.45*sk})`;
+    pop(E('nocode'),t,2.55,.35,30);
+  }
+
+  /* S2 */
+  if(t>2.8&&t<12.3){
+    pop(E('p_eb'),t,3.1,.4,30);pop(E('p_h'),t,3.2,.5);
+    const wk=P(t,3.25,.5),wo=P(t,9.65,.35);st(E('win'),eo(wk)*(1-eo(wo)),0,(1-eo(wk))*80,(.94+.06*eo(wk))*(1-.08*eo(wo)),wo*10);
+    const ka=1-P(t,5.35,.25),kb=P(t,5.35,.25)*(1-P(t,7.15,.25)),kc=P(t,7.15,.25);
+    E('pa').style.opacity=ka;E('pb').style.opacity=kb;E('pc').style.opacity=kc;
+    E('wtitle').textContent=t<5.45?'Inbox → Leads.xlsx':t<7.27?'Support Inbox · 48 unread':'Weekly_Report_FINAL.xlsx';
+    // a) copy-paste loop
+    let cx=-200,cy=-200,cur=0;
+    for(let i=0;i<4;i++){const s=3.45+i*.45,k=P(t,s,.36);
+      E('em'+i).style.background=(t>=s-.15&&t<s+.45)?'rgba(168,85,247,.28)':'rgba(255,255,255,.04)';
+      for(let j=0;j<3;j++)E(`c${i}${j}`).textContent=t>=s+.36+j*.07?cellTxt[i][j]:'';
+      if(t>=s-.15&&t<s+.45){const e=eio(k);cx=lerp(240,500,e);cy=lerp(60+i*160,150+i*82,e)-Math.sin(e*Math.PI)*90;cur=1}}
+    st(E('chip'),cur*ka,cx,cy,1);
+    E('cursor').style.opacity=t>3.4&&t<5.3?1:0;E('cursor').style.transform=`translate(${cx+70+100}px,${cy+632+20}px)`;
+    // b) same questions
+    qs.forEach((q,i)=>slide(E('q'+i),t,5.55+i*.32,.35,-80));
+    pop(E('reply'),t,6.75,.35,30);E('rdots').textContent='…'.slice(0,1)+(Math.floor(t*4)%2?' ':'');
+    E('qn').textContent=Math.round(37*eo(P(t,5.6,1.4)));
+    // c) same report
+    [0,1,2,3].forEach(i=>slide(E('rp'+i),t,7.35+i*.42,.4,500));pop(E('again'),t,9.05,.35,30);
+    // d) hours lost
+    const dk=P(t,9.8,.4);E('pd').style.opacity=eo(dk);E('pd').style.transform=`scale(${.9+.1*eb(dk)})`;
+    E('hrs').textContent=Math.round(15*eo(P(t,9.85,1.1)));
+    E('hand1').setAttribute('transform',`rotate(${t*360} 50 50)`);E('hand2').setAttribute('transform',`rotate(${t*30} 50 50)`);
+    pop(E('machine'),t,10.75,.4,40);
+  }
+
+  /* S3 */
+  if(t>11.8&&t<18.3){
+    pop(E('st1p'),t,12.2,.4,30);pop(E('st1h'),t,12.35,.5);
+    const pick=1, sel=P(t,15.25,.3);
+    TASKS.forEach((_,i)=>{const k=P(t,13.15+i*.13,.4);const isP=i===pick;
+      const dim=isP?1:1-.62*sel;st(E('tk'+i),eo(k)*dim,(1-eo(k))*160,0,isP?1+.045*eb(sel):1-.02*sel);
+      E('tk'+i).style.borderColor=isP&&sel>0?`rgba(168,85,247,${.38+.62*sel})`:'rgba(168,85,247,.38)';
+      E('tk'+i).style.boxShadow=isP&&sel>0?`0 0 ${60*sel}px rgba(168,85,247,${.7*sel}),0 30px 80px rgba(0,0,0,.45)`:'0 30px 80px rgba(0,0,0,.45)';
+      E('ck'+i).style.background=isP&&sel>.5?'#A855F7':'transparent';E('ck'+i).style.borderColor=isP&&sel>.5?'#A855F7':'rgba(255,255,255,.25)';
+      E('ck'+i).firstChild.style.opacity=isP?eo(P(t,15.4,.25)):0});
+    pop(E('tag'),t,15.6,.35,20);
+    // cursor glides through the list, then lands on task 2
+    const hk=eio(P(t,14.3,.9));const hy=lerp(1250,660+pick*136+60,hk),hx=lerp(900,820,hk)+(hk<1?40*Math.sin(hk*Math.PI*2):0);
+    const press=t>15.15&&t<15.35?.85:1;st(E('hand'),P(t,14.2,.2)*(1-P(t,16.6,.3)),hx,hy,press);
+    pop(E('st1n'),t,16.2,.4,30);
+  }
+
+  /* S4 */
+  if(t>17.8&&t<24.3){
+    pop(E('st2p'),t,18.2,.4,30);pop(E('st2h'),t,18.35,.5);
+    pop(E('inCard'),t,19.5,.45,60);
+    ['f1','f2','f3'].forEach((f,i)=>{E(f).style.opacity=eo(P(t,19.75+i*.2,.3))});
+    pop(E('aiNode'),t,20.05,.45,40);E('aiNode').style.boxShadow=`0 0 ${50+30*Math.sin(t*5)}px rgba(168,85,247,.65)`;
+    pop(E('outCard'),t,20.25,.45,60);
+    OUTS.forEach((_,i)=>slide(E('o'+i),t,21.2+i*.45,.35,60));
+    [[E('flow1'),908,955],[E('flow2'),1105,1160]].forEach(([el,a,b],j)=>{const ph=((t-20.2-j*.35)*1.3)%1;el.style.opacity=t>20.2?Math.sin(cl(ph)*Math.PI):0;el.style.transform=`translate(529px,${lerp(a-12,b-12,cl(ph))}px)`});
+  }
+
+  /* S5 */
+  if(t>23.8&&t<30.3){
+    pop(E('st3p'),t,24.2,.4,30);pop(E('st3h'),t,24.35,.5);
+    pop(E('canvas'),t,24.7,.5,80);
+    const nodeT=[25.3,25.55,26.05,26.15,25.8,25.9];
+    NODES.forEach((n,i)=>{const k=P(t,nodeT[i],.35);E(n.id).style.opacity=eo(k);E(n.id).style.transform=`scale(${.6+.4*eb(k)})`});
+    const edgeT=[25.5,25.95,26.05,25.85,25.95];
+    EDGES.forEach((e,i)=>{const p=E(e[0]),L=p.getTotalLength(),k=eo(P(t,edgeT[i],.4));
+      if(e[2]!=2){p.style.strokeDasharray=L;p.style.strokeDashoffset=L*(1-k)}else p.style.opacity=k});
+    // execution
+    const exec=[[27.3,'n0'],[28.45,'n1'],[29.05,'n2'],[29.1,'n3']];
+    exec.forEach(([s,id])=>{const ok=t>=s;const n=E(id);n.style.borderColor=ok?'#22C55E':(id==='n1'&&t>27.85?'#A855F7':'#4B4258');
+      n.style.boxShadow=ok?`0 0 ${30*eo(P(t,s,.3))}px rgba(34,197,94,.55)`:'none';const b=n.querySelector('.badge');b.style.opacity=eo(P(t,s,.25));b.style.transform=`scale(${.4+.6*eb(P(t,s,.3))})`});
+    const sp=E('spin');sp.style.opacity=t>27.85&&t<28.45?1:0;sp.style.transform=`rotate(0deg)`;sp.style.background=`conic-gradient(from ${t*600}deg,#A855F7,transparent 35%,#E9D5FF 50%,transparent 85%)`;
+    ['e3','e4'].forEach(id=>{E(id).style.stroke=t>27.9&&t<28.45?'#A855F7':(t>=28.45?'#22C55E':'#8E86A0')});
+    const pkt=(el,path,s,d)=>{const k=P(t,s,d);if(k<=0||k>=1){el.style.opacity=0;return}const p=E(path),pt=p.getPointAtLength(p.getTotalLength()*eio(k));el.setAttribute('cx',pt.x);el.setAttribute('cy',pt.y);el.style.opacity=1};
+    pkt(PK[0],'e0',27.35,.5);pkt(PK[1],'e1',28.5,.55);pkt(PK[2],'e2',28.5,.6);
+    E('e0').style.stroke=t>=27.85?'#22C55E':'#8E86A0';E('e1').style.stroke=t>=29.05?'#22C55E':'#8E86A0';E('e2').style.stroke=t>=29.1?'#22C55E':'#8E86A0';
+    E('il0').style.opacity=P(t,27.85,.2);E('il1').style.opacity=P(t,29.05,.2);E('il2').style.opacity=P(t,29.1,.2);
+    // cursor -> Test workflow button
+    const ck=eio(P(t,26.3,.75));const cx=lerp(860,500,ck),cy=lerp(640,745,ck);const pr=t>26.95&&t<27.15;
+    st(E('cur3'),P(t,26.2,.2)*(1-P(t,27.6,.3)),cx,cy,pr?.85:1);
+    E('testBtn').style.transform=`scale(${pr?.94:1})`;E('testBtn').style.filter=pr?'brightness(1.3)':'none';
+    E('testBtn').style.opacity=eo(P(t,26.0,.3));
+    const tk=P(t,29.35,.35);st(E('toast'),eo(tk),0,(1-eo(tk))*-30,1);
+    const act=t>29.5;E('knob').style.left=act?'32px':'4px';E('toggle').style.background=act?'#22C55E':'#3A3344';E('activeTxt').textContent=act?'Active':'Inactive';E('activeTxt').style.color=act?'#86EFAC':'#9F98AB';
+  }
+
+  /* S6 */
+  if(t>29.7){
+    pop(E('ctaLogo'),t,30.05,.45,30);pop(E('c1'),t,30.12,.4,50);
+    pop(E('cbox'),t,30.35,.45,60);
+    const n=Math.floor(cl((t-30.55)/.08,0,5));E('typed').textContent='AGENT'.slice(0,n);
+    E('caret').style.opacity=(n<5||Math.floor(t*3)%2===0)?1:0;
+    const pulse=t>31.2?1+.025*Math.sin((t-31.2)*7):1;E('cbox').style.transform+=` scale(${pulse})`;
+    pop(E('c2'),t,30.95,.4,50);E('uline').style.width=eio(P(t,31.45,.35))*100+'%';
+    pop(E('c3'),t,31.6,.4,30);
+    const ch=P(t,31.8,.3);E('chev').style.opacity=ch;E('chev').style.transform=`translateY(${18*Math.abs(Math.sin((t-31.8)*4))}px)`;
+    BUBS.forEach(b=>{const k=t-b.s;b.d.style.opacity=k<0?0:Math.max(0,.9-k*.45);b.d.style.transform=`translate(${b.x}px,${1820-k*b.v}px) scale(${.8+.2*Math.min(1,k*3)})`});
+  }
+  captions(t);
+}
+window.render=render;render(0);
+</script>
+</body></html>
