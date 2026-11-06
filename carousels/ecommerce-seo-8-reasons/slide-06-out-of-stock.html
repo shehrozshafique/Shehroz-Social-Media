@@ -1,0 +1,71 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="common.css"><style>
+.lead{margin-top:36px}
+.cmp{margin-top:64px;display:flex;justify-content:space-between}
+.col{width:445px}
+.tag{display:inline-flex;align-items:center;gap:12px;height:54px;padding:0 22px;border-radius:12px;font-family:Bebas;font-size:34px;letter-spacing:.5px;padding-top:3px}
+.tag svg{width:24px;height:24px;fill:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;margin-top:-3px}
+.bad{background:#EEE7E7;color:#6E5C5C}.bad svg{stroke:#6E5C5C}
+.good{background:var(--tint);color:var(--red)}.good svg{stroke:var(--red)}
+.win{margin-top:18px;height:560px;border-radius:22px;overflow:hidden;display:flex;flex-direction:column}
+.bar{flex:none;height:48px;display:flex;align-items:center;gap:9px;padding:0 18px;background:#FBF5F5;border-bottom:1.5px solid rgba(31,11,11,.07)}
+.bar i{width:12px;height:12px;border-radius:50%;background:#E3D6D6}
+.bar span{margin-left:12px;flex:1;height:28px;border-radius:7px;background:#fff;font-size:15px;color:#4A3A3A;display:flex;align-items:center;padding:0 12px}
+.nf{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.nf .big{font-family:Bebas;font-size:150px;line-height:.9;color:#DCCACA}
+.nf h4{margin-top:22px;font-weight:800;font-size:29px}
+.nf p{margin-top:12px;font-size:19px;line-height:1.5;color:var(--muted)}
+.nf .dead{margin-top:20px;display:flex;align-items:center;gap:9px;font-weight:600;font-size:18px;color:#6E5C5C}
+.nf .dead i{width:12px;height:12px;border-radius:50%;background:#6E5C5C}
+.pg{padding:20px 22px}
+.prod{display:flex;gap:18px}
+.prod .img{flex:none;width:150px;height:150px;border-radius:14px;background:#F6EFEF;display:flex;align-items:center;justify-content:center}
+.prod .img svg{width:92px}
+.prod h4{font-weight:800;font-size:23px}
+.prod .pr{margin-top:6px;font-size:18px;color:var(--muted)}
+.oos{display:inline-block;margin-top:10px;background:#F1E9E9;color:#6E5C5C;font-weight:600;font-size:15px;padding:4px 10px;border-radius:6px}
+.btn{margin-top:12px;width:172px;height:38px;border-radius:9px;background:var(--red);color:#fff;font-weight:700;font-size:16px;display:flex;align-items:center;justify-content:center}
+.rel{margin-top:22px;font-weight:700;font-size:18px}
+.prods{margin-top:12px;display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.prods i{display:block;height:96px;border-radius:12px;background:#F6EFEF}
+.prods b{display:block;margin-top:8px;font-weight:600;font-size:14.5px}
+.prods span{font-size:13.5px;color:var(--red);font-weight:500}
+.keep{margin-top:20px;font-size:16.5px;line-height:1.5;color:var(--muted)}
+</style></head><body>
+<div class="wrap">
+ <div class="toprow"><div class="count">06 <span>/ 10</span></div><div class="label">REASON 4 OF 8</div></div>
+ <div class="h"><span><span class="r">04 —</span> OUT-OF-STOCK 404<span style="font-size:.72em">S</span></span></div>
+ <div class="lead">Removing products can cost you links and rankings.<br><b>Keep useful pages live and show alternatives.</b></div>
+ <div class="cmp">
+  <div class="col">
+   <div class="tag bad"><svg viewBox="0 0 24 24"><path d="M5 5l14 14M19 5L5 19"/></svg>PRODUCT REMOVED</div>
+   <div class="win card">
+    <div class="bar"><i></i><i></i><i></i><span>store.com/trail-runner-pro</span></div>
+    <div class="nf"><div class="big">404</div><h4>Page not found</h4><p>The visitor leaves.<br>Links to this URL lead nowhere.</p><div class="dead"><i></i>Dead end</div></div>
+   </div>
+  </div>
+  <div class="col">
+   <div class="tag good"><svg viewBox="0 0 24 24"><path d="M4.5 12.5l5 5 10-11"/></svg>PAGE KEPT LIVE</div>
+   <div class="win card">
+    <div class="bar"><i></i><i></i><i></i><span>store.com/trail-runner-pro</span></div>
+    <div class="pg">
+     <div class="prod">
+      <div class="img"><svg viewBox="0 0 92 40"><path d="M6 30 C 20 30, 30 26, 38 14 C 44 6, 52 8, 56 16 C 60 22, 74 24, 86 28 L86 33 L6 33 Z" fill="#E7C9C9"/><path d="M4 37 H88" stroke="#E7C9C9" stroke-width="3"/></svg></div>
+      <div><h4>Trail Runner Pro</h4><div class="pr">£119</div><div class="oos">Out of stock</div><div class="btn">Notify me</div></div>
+     </div>
+     <div class="rel">Related products available</div>
+     <div class="prods">
+      <div><i></i><b>Trail Grip</b><span>In stock</span></div>
+      <div><i></i><b>Ridge Pro 2</b><span>In stock</span></div>
+      <div><i></i><b>Storm Dry</b><span>In stock</span></div>
+     </div>
+     <div class="keep">URL, content and links stay. Shoppers find an alternative.</div>
+    </div>
+   </div>
+  </div>
+ </div>
+</div>
+<div class="foot">
+ <div class="me"><div class="av"><img src="img/avatar.png"></div><div><b>Shehroz Shafique</b><span>CEO, Permanent SEO</span></div></div>
+ <div class="tagline">Helping businesses build their<br><b>brand &amp; permanent growth</b></div>
+</div>
+</body></html>
