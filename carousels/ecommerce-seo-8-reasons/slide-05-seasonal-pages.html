@@ -1,0 +1,45 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="common.css"><style>
+.lead{margin-top:36px}
+.tl{position:absolute;left:80px;right:80px;top:600px;height:300px}
+.mon{position:absolute;top:0;width:240px;text-align:center;font-family:Bebas;font-size:42px;letter-spacing:.5px}
+.dot{position:absolute;top:62px;width:60px;height:60px;border-radius:50%}
+.d1{background:var(--red);box-shadow:0 0 0 10px rgba(196,3,3,.15)}
+.d2{background:#fff;border:5px solid var(--ink);display:flex;align-items:center;justify-content:center}
+.d2 svg{width:24px;height:24px;stroke:var(--ink);stroke-width:3.5;stroke-linecap:round}
+.d3{background:#fff;border:5px solid #CDB9B9}
+.seg{position:absolute;top:89px;height:6px;border-radius:3px}
+.box{position:absolute;top:150px;width:240px;padding:18px 12px;border-radius:18px;text-align:center}
+.box b{display:block;font-weight:800;font-size:24px;line-height:1.2}
+.box span{display:block;margin-top:6px;font-size:18px;color:var(--muted)}
+.box.del{border-color:rgba(31,11,11,.35)}
+.fix{position:absolute;left:80px;right:80px;top:990px;height:130px;border-radius:24px;background:var(--red);display:flex;align-items:center;gap:28px;padding:0 36px;color:#fff;box-shadow:0 16px 34px rgba(196,3,3,.28)}
+.fix i{flex:none;width:70px;height:70px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center}
+.fix svg{width:34px;height:34px;stroke:var(--red);fill:none;stroke-width:3.4;stroke-linecap:round;stroke-linejoin:round}
+.fix b{font-weight:800;font-size:31px}
+.fix .mono{font-size:32px;color:#FFD3D3}
+.fix p{margin-top:6px;font-size:23px;opacity:.95}
+</style></head><body>
+<div class="wrap">
+ <div class="toprow"><div class="count">05 <span>/ 10</span></div><div class="label">REASON 3 OF 8</div></div>
+ <div class="h"><span class="fit"><span class="r">03 —</span> DELETED SEASONAL PAGES</span></div>
+ <div class="lead">Every January the Black Friday page gets deleted.<br><b>Every November you start from zero.</b></div>
+</div>
+<div class="tl">
+ <div class="mon" style="left:0">NOVEMBER</div><div class="mon" style="left:340px">JANUARY</div><div class="mon" style="left:680px">NOVEMBER</div>
+ <div class="seg" style="left:150px;width:240px;background:var(--red)"></div>
+ <div class="seg" style="left:490px;width:240px;background:repeating-linear-gradient(90deg,#CDB9B9 0 16px,transparent 16px 26px)"></div>
+ <div class="dot d1" style="left:90px"></div>
+ <div class="dot d2" style="left:430px"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></div>
+ <div class="dot d3" style="left:770px"></div>
+ <div class="box card" style="left:0"><b>Black Friday page live</b><span>/black-friday-2026</span></div>
+ <div class="box card del" style="left:340px"><b>Page deleted</b><span>Links &amp; history lost</span></div>
+ <div class="box card" style="left:680px"><b>Page recreated</b><span>/black-friday-2027</span></div>
+</div>
+<div class="fix"><i><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></i>
+ <div><div><b>Keep one evergreen URL:</b> <span class="mono">/black-friday</span></div><p>Update it every year. Keep it live between sales.</p></div></div>
+<div class="foot">
+ <div class="me"><div class="av"><img src="img/avatar.png"></div><div><b>Shehroz Shafique</b><span>CEO, Permanent SEO</span></div></div>
+ <div class="brand"><p>PERMANENT SEO</p><div class="tile"><img src="img/logo-white.png"></div></div>
+</div>
+<script src="fit.js"></script>
+</body></html>

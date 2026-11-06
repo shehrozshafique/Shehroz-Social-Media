@@ -1,0 +1,65 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="common.css"><style>
+.lead{margin-top:36px}
+.cmp{margin-top:56px;display:flex;justify-content:space-between}
+.col{width:445px}
+.tag{display:inline-flex;align-items:center;gap:12px;height:54px;padding:0 22px;border-radius:12px;font-family:Bebas;font-size:34px;letter-spacing:.5px;padding-top:3px}
+.tag svg{width:24px;height:24px;fill:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;margin-top:-3px}
+.bad{background:#EEE7E7;color:#6E5C5C}.bad svg{stroke:#6E5C5C}
+.good{background:var(--tint);color:var(--red)}.good svg{stroke:var(--red)}
+.win{margin-top:18px;height:520px;border-radius:22px;overflow:hidden;display:flex;flex-direction:column}
+.bar{flex:none;height:48px;display:flex;align-items:center;gap:9px;padding:0 18px;background:#FBF5F5;border-bottom:1.5px solid rgba(31,11,11,.07)}
+.bar i{width:12px;height:12px;border-radius:50%;background:#E3D6D6}
+.bar span{margin-left:12px;flex:1;height:28px;border-radius:7px;background:#fff;font-size:15px;color:#4A3A3A;display:flex;align-items:center;padding:0 12px}
+.grid9{padding:22px;display:grid;grid-template-columns:repeat(3,1fr);gap:14px;flex:1}
+.grid9 div{border-radius:12px;background:#F6EFEF}
+.no{padding:0 22px 22px;font-weight:600;font-size:20px;color:#6E5C5C}
+.pg{padding:22px 22px 0}
+.pg h4{font-weight:800;font-size:27px}
+.pg p{margin-top:10px;font-size:16px;line-height:1.5;color:var(--muted)}
+.chips{margin-top:14px;display:flex;gap:8px}
+.chips span{background:var(--tint);color:var(--red);font-weight:600;font-size:14.5px;padding:5px 12px;border-radius:20px}
+.prods{margin-top:16px;display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.prods i{display:block;height:96px;border-radius:12px;background:#F6EFEF}
+.prods b{display:block;margin-top:8px;font-weight:600;font-size:13.5px}
+.prods span{font-size:13px;color:var(--muted)}
+.links{margin:16px 22px 0;padding-top:12px;border-top:1.5px solid rgba(31,11,11,.08);display:flex;flex-direction:column;gap:9px;font-weight:600;font-size:15px}
+.links span{color:var(--red)}
+</style></head><body>
+<div class="wrap">
+ <div class="toprow"><div class="count">03 <span>/ 10</span></div><div class="label">REASON 1 OF 8</div></div>
+ <div class="h"><span class="fit"><span class="r">01 —</span> THIN COLLECTION PAGES</span></div>
+ <div class="lead">A grid of products and no text. <b>Google can't tell what the page is about or why it should rank.</b></div>
+ <div class="cmp">
+  <div class="col">
+   <div class="tag bad"><svg viewBox="0 0 24 24"><path d="M5 5l14 14M19 5L5 19"/></svg>THIN PAGE</div>
+   <div class="win card">
+    <div class="bar"><i></i><i></i><i></i><span>store.com/shoes</span></div>
+    <div class="grid9"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+    <div class="no">No heading. No copy. No context.</div>
+   </div>
+  </div>
+  <div class="col">
+   <div class="tag good"><svg viewBox="0 0 24 24"><path d="M4.5 12.5l5 5 10-11"/></svg>HELPFUL PAGE</div>
+   <div class="win card">
+    <div class="bar"><i></i><i></i><i></i><span>store.com/mens-running-shoes</span></div>
+    <div class="pg">
+     <h4>Men's Running Shoes</h4>
+     <p>Road, trail and waterproof running shoes in sizes 6–14. Compare cushioning, drop and weight to find your fit.</p>
+     <div class="chips"><span>Road</span><span>Trail</span><span>Waterproof</span></div>
+     <div class="prods">
+      <div><i></i><b>Road Runner</b><span>£89</span></div>
+      <div><i></i><b>Trail Grip</b><span>£104</span></div>
+      <div><i></i><b>Storm Dry</b><span>£119</span></div>
+     </div>
+    </div>
+    <div class="links"><div>Buying guide: how to choose running shoes <span>→</span></div><div>FAQ: sizing, returns &amp; care <span>→</span></div></div>
+   </div>
+  </div>
+ </div>
+</div>
+<div class="foot">
+ <div class="me"><div class="av"><img src="img/avatar.png"></div><div><b>Shehroz Shafique</b><span>CEO, Permanent SEO</span></div></div>
+ <div class="brand"><p>PERMANENT SEO</p><div class="tile"><img src="img/logo-white.png"></div></div>
+</div>
+<script src="fit.js"></script>
+</body></html>

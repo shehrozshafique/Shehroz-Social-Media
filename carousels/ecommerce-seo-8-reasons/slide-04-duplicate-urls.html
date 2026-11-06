@@ -1,0 +1,44 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="common.css"><style>
+.lead{margin-top:36px}
+.top{position:absolute;left:340px;top:470px;width:400px;height:116px;border-radius:20px;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.k{font-weight:700;font-size:17px;letter-spacing:2.5px;color:var(--muted)}
+.top b{margin-top:6px;font-weight:800;font-size:38px}
+.dups{position:absolute;left:80px;right:80px;top:700px;display:flex;gap:16px}
+.dup{flex:1;height:126px;border-radius:20px;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.dup .k{color:var(--red)}
+.dup .mono{margin-top:8px;font-size:23px}
+.dup span{margin-top:6px;font-size:16.5px;color:var(--muted)}
+.pref{position:absolute;left:290px;top:1005px;width:500px;height:98px;border-radius:20px;background:var(--ink);display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 14px 30px rgba(31,11,11,.22)}
+.pref .k{color:#FF8A8A}
+.pref .mono{margin-top:8px;font-size:25px;color:#fff}
+.note{position:absolute;left:80px;right:80px;top:1155px;text-align:center;font-style:italic;font-size:21px;color:var(--muted)}
+#lines{position:absolute;left:0;top:0}
+</style></head><body>
+<svg id="lines" width="1080" height="1350" viewBox="0 0 1080 1350" fill="none">
+ <g stroke="#D9A8A8" stroke-width="2.5" stroke-dasharray="3 7" stroke-linecap="round">
+  <path d="M540 600 C 500 640, 280 650, 250 692"/><path d="M540 600 V692"/><path d="M540 600 C 580 640, 800 650, 830 692"/>
+ </g>
+ <g stroke="#C40303" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M250 860 C 250 945, 440 935, 505 990"/><path d="M540 860 V992"/><path d="M830 860 C 830 945, 640 935, 575 990"/>
+ </g>
+ <g fill="#C40303"><path d="M512 1000 L492 985 L515 979 Z"/><path d="M540 1000 L530 980 L550 980 Z"/><path d="M568 1000 L565 979 L588 985 Z"/></g>
+</svg>
+<div class="wrap">
+ <div class="toprow"><div class="count">04 <span>/ 10</span></div><div class="label">REASON 2 OF 8</div></div>
+ <div class="h"><span class="fit"><span class="r">02 —</span> DUPLICATE URLS</span></div>
+ <div class="lead">Filters, sorting and variants can create hundreds of <span style="white-space:nowrap">near-identical</span> URLs. <b>Check your canonicals.</b></div>
+</div>
+<div class="top card"><div class="k">ONE COLLECTION PAGE</div><b>/shoes</b></div>
+<div class="dups">
+ <div class="dup card"><div class="k">NEAR-DUPLICATE</div><div class="mono">/shoes?sort=price</div><span>Same products, new order</span></div>
+ <div class="dup card"><div class="k">NEAR-DUPLICATE</div><div class="mono">/shoes?color=black</div><span>Filtered subset</span></div>
+ <div class="dup card"><div class="k">NEAR-DUPLICATE</div><div class="mono">/shoes?size=10</div><span>Filtered subset</span></div>
+</div>
+<div class="pref"><div class="k">REVIEW → PREFERRED URL</div><div class="mono">rel="canonical" → /shoes</div></div>
+<div class="note">Example only. Some filter pages deserve to be indexed — review each URL pattern.</div>
+<div class="foot">
+ <div class="me"><div class="av"><img src="img/avatar.png"></div><div><b>Shehroz Shafique</b><span>CEO, Permanent SEO</span></div></div>
+ <div class="brand"><p>PERMANENT SEO</p><div class="tile"><img src="img/logo-white.png"></div></div>
+</div>
+<script src="fit.js"></script>
+</body></html>
