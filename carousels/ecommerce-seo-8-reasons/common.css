@@ -17,8 +17,8 @@ body{position:relative;font-family:Inter,sans-serif;color:var(--ink);background:
 .count span{color:#FF7A7A}
 .label{font-weight:600;font-size:20px;letter-spacing:3.5px;color:var(--muted)}
 /* full-width heading: every .fit line is scaled to the content width */
-.h{margin-top:30px;font-family:Bebas;line-height:.9;color:var(--ink);letter-spacing:.5px}
-.fit{display:block;width:max-content;white-space:nowrap}
+.h{margin-top:30px;font-family:Bebas;font-size:95px;line-height:.92;color:var(--ink);letter-spacing:.5px}
+.h>span{display:block;white-space:nowrap}
 .h .r{color:var(--red)}
 .lead{font-size:33px;line-height:1.42;color:var(--ink)}
 .lead b{font-weight:700}
@@ -29,8 +29,8 @@ body{position:relative;font-family:Inter,sans-serif;color:var(--ink);background:
 .me .av img{width:100%;height:100%;border-radius:50%;display:block}
 .me b{display:block;font-weight:700;font-size:24px;line-height:1.2}
 .me span{display:block;font-size:19px;color:var(--muted);margin-top:2px}
-.brand{display:flex;align-items:center;gap:16px}
-.brand p{font-family:Bebas;font-size:34px;letter-spacing:1px;padding-top:4px}
+.tagline{text-align:right;font-size:19px;line-height:1.4;color:var(--muted);width:360px}
+.tagline b{font-weight:700;color:var(--red)}
 .tile{width:70px;height:70px;border-radius:16px;background:linear-gradient(150deg,var(--red2),var(--red) 55%,var(--deep));display:flex;align-items:center;justify-content:center;box-shadow:0 8px 18px rgba(196,3,3,.28)}
 .tile img{width:46px;display:block}
 /* shared pieces */
