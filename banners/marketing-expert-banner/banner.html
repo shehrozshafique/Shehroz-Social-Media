@@ -14,10 +14,11 @@ body{position:relative;font-family:Inter,sans-serif;color:var(--ink);background:
 .blob{position:absolute;border-radius:50%;background:rgba(196,3,3,.07)}
 .abs{position:absolute}
 /* logo top-left */
-.logo{left:32px;top:24px;display:flex;align-items:center;gap:10px}
-.logo img{height:38px}
-.logo p{font-weight:700;font-size:37px;letter-spacing:-.8px;color:#120E5D}
-.logo p b{color:#205EEF;font-weight:700}
+.logo{left:32px;top:18px;display:flex;align-items:center;gap:14px}
+.logo .tile{width:64px;height:64px;border-radius:3px;background:linear-gradient(180deg,#2B55F4,#2440B8 55%,#1C2568);display:flex;align-items:center;justify-content:center;box-shadow:0 6px 14px rgba(28,37,104,.25)}
+.logo .tile img{width:46px;display:block}
+.logo p{font-weight:700;font-size:37px;letter-spacing:-.8px;color:var(--ink)}
+.logo p b{color:var(--red);font-weight:700}
 /* headline */
 .hl{left:0;width:1960px;text-align:center;font-family:HeadSerif;font-weight:700;line-height:1;white-space:nowrap}
 .hl span.sq{display:inline-block;transform:scaleX(.84);transform-origin:center}
@@ -29,7 +30,7 @@ body{position:relative;font-family:Inter,sans-serif;color:var(--ink);background:
 .bebas .l1{top:28px}.bebas .l2{top:146px}
 .bebas .hl span.sq{transform:none}
 /* skills pill */
-.pill{left:460px;top:285px;width:1020px;height:84px;border:3px solid var(--red);border-radius:44px;background:rgba(255,255,255,.75);display:flex;align-items:center;justify-content:space-evenly;font-weight:500;font-size:32px;letter-spacing:-.4px;box-shadow:0 10px 26px rgba(196,3,3,.10)}
+.pill{left:460px;top:285px;width:1020px;height:84px;border:3px solid var(--red);border-radius:44px;background:rgba(255,255,255,.75);display:flex;align-items:center;justify-content:space-evenly;font-weight:500;font-size:30px;letter-spacing:-.4px;box-shadow:0 10px 26px rgba(196,3,3,.10)}
 .pill i{width:3px;height:42px;border-radius:2px;background:var(--red)}
 /* expert row */
 .row{left:474px;top:409px;display:flex;align-items:center;gap:21px}
@@ -47,12 +48,12 @@ body{position:relative;font-family:Inter,sans-serif;color:var(--ink);background:
 <div class="blob" style="width:260px;height:260px;left:780px;top:-200px;background:rgba(196,3,3,.05)"></div>
 <div class="blob" style="width:300px;height:300px;right:-120px;top:-170px;background:rgba(196,3,3,.05)"></div>
 
-<div class="abs logo"><img src="img/logo-blue.png"><p>Permanent <b>SEO</b></p></div>
+<div class="abs logo"><div class="tile"><img src="img/logo-white.png"></div><p>Permanent <b>SEO</b></p></div>
 
 <div class="abs hl l1"><span class="sq">Marketing Expert &amp;</span></div>
 <div class="abs hl l2"><span class="sq"><span class="grad">AI Search</span>&nbsp; Specialist</span></div>
 
-<div class="abs pill"><span>Semantic SEO &amp; AI SEO</span><i></i><span>AI Automation</span><i></i><span>GoHighLevel Expert</span></div>
+<div class="abs pill"><span>Marketing Expert &amp; AI SEO</span><i></i><span>AI Automation</span><i></i><span>GoHighLevel Expert</span></div>
 
 <div class="abs row"><p>Expert in</p>
  <img src="img/shopify.png"><img src="img/highlevel.png"><img src="img/n8n.png"><img src="img/meta.png"><img src="img/wordpress.png"><img src="img/google-ads.png"><img src="img/icon-8.png"><img src="img/icon-9.png">
