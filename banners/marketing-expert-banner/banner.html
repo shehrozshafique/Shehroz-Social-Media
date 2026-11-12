@@ -14,7 +14,9 @@ body{position:relative;font-family:Inter,sans-serif;color:var(--ink);background:
 .blob{position:absolute;border-radius:50%;background:rgba(48,103,255,.08)}
 .abs{position:absolute}
 /* top-left claim (where the logo text was) */
-.claim{left:32px;top:30px;font-weight:700;font-size:28px;letter-spacing:-.6px;color:var(--ink);white-space:nowrap}
+.claim{left:32px;top:22px;display:flex;align-items:center;gap:12px;height:58px;padding:0 22px 0 9px;border-radius:16px;background:#fff;border:2px solid rgba(48,103,255,.25);box-shadow:0 10px 24px rgba(48,103,255,.16);font-weight:700;font-size:25px;letter-spacing:-.4px;color:var(--ink);white-space:nowrap}
+.claim i{width:40px;height:40px;border-radius:11px;background:var(--blue);display:flex;align-items:center;justify-content:center}
+.claim svg{width:22px;height:22px;stroke:#fff;fill:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
 .claim b{color:var(--blue);font-weight:800}
 /* headline */
 .hl{left:0;width:1960px;text-align:center;font-family:HeadSerif;font-weight:700;line-height:1;white-space:nowrap}
@@ -40,7 +42,7 @@ body{position:relative;font-family:Inter,sans-serif;color:var(--ink);background:
 <div class="blob" style="width:260px;height:260px;left:780px;top:-200px;background:rgba(48,103,255,.06)"></div>
 <div class="blob" style="width:300px;height:300px;right:-120px;top:-170px;background:rgba(48,103,255,.06)"></div>
 
-<div class="abs claim">Worked With <b>75+ Happy Clients</b></div>
+<div class="abs claim"><i><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></i>Worked With <b>75+ Happy Clients</b></div>
 
 <div class="abs hl l1"><span class="sq">Marketing Expert &amp;</span></div>
 <div class="abs hl l2"><span class="sq"><span class="grad">AI Search</span>&nbsp; Specialist</span></div>
@@ -48,7 +50,7 @@ body{position:relative;font-family:Inter,sans-serif;color:var(--ink);background:
 <div class="abs pill"><span>Marketing Expert &amp; AI SEO</span><i></i><span>AI Automation</span><i></i><span>GoHighLevel Expert</span></div>
 
 <div class="abs row"><p>Expert in</p>
- <img src="img/logos/shopify.png"><img src="img/logos/highlevel.png"><img src="img/logos/n8n.png"><img src="img/logos/meta.png"><img src="img/logos/wordpress.png"><img src="img/logos/google-ads.png"><img src="img/logos/icon-8.png"><img src="img/logos/icon-9.png">
+ <img src="img/logos/shopify.png"><img src="img/logos/highlevel.png"><img src="img/logos/n8n.png"><img src="img/logos/meta.png"><img src="img/logos/wordpress.png"><img src="img/logos/google-ads.png"><img src="img/logos/icon-9.png">
  <p style="margin-left:4px">&amp; More</p></div>
 
 <img class="abs photo" src="img/cutout.png">
