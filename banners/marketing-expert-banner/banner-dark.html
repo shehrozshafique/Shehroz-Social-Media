@@ -1,0 +1,76 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+/* Dark-blue profile banner (2000x504): headline left, photo centre, services right. Colours #3067FF + #FEFEFE. */
+@font-face{font-family:Inter;font-weight:500;src:url(fonts/Inter-Medium.otf)}
+@font-face{font-family:Inter;font-weight:600;src:url(fonts/Inter-SemiBold.otf)}
+@font-face{font-family:Inter;font-weight:700;src:url(fonts/Inter-Bold.otf)}
+@font-face{font-family:Inter;font-weight:800;src:url(fonts/Inter-ExtraBold.otf)}
+@font-face{font-family:HeadSerif;font-weight:700;src:url(fonts/LiberationSerif-Bold.ttf)}
+:root{--blue:#3067FF;--blue2:#6E98FF;--white:#FEFEFE;--navy:#06103F}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:2000px;height:504px;overflow:hidden}
+body{position:relative;font-family:Inter,sans-serif;color:var(--white);
+ background:radial-gradient(38% 80% at 52% 55%,rgba(48,103,255,.55),rgba(48,103,255,0) 70%),
+ radial-gradient(30% 70% at 0% 100%,rgba(48,103,255,.35),rgba(48,103,255,0) 70%),
+ radial-gradient(30% 70% at 100% 0%,rgba(48,103,255,.30),rgba(48,103,255,0) 70%),
+ linear-gradient(120deg,#081650,#0E2A9E 45%,#0A1C6E)}
+.abs{position:absolute}
+#bg{left:0;top:0}
+/* headline */
+.hl{left:70px;font-family:HeadSerif;font-weight:700;line-height:1;white-space:nowrap}
+.hl span{display:inline-block;transform:scaleX(.86);transform-origin:left}
+.l1{top:58px;font-size:84px;text-shadow:0 6px 24px rgba(0,0,0,.35)}
+.l2{top:140px;font-size:128px}
+.l2 span{background:linear-gradient(180deg,#8FB1FF,var(--blue) 60%,#2453E6);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 6px 22px rgba(48,103,255,.55))}
+.l3{top:262px;font-size:84px;text-shadow:0 6px 24px rgba(0,0,0,.35)}
+.swoosh{left:72px;top:356px}
+/* expert row */
+.row{left:70px;top:398px;display:flex;align-items:center;gap:12px}
+.row p{font-weight:600;font-size:24px;margin-right:6px;color:#C9D7FF}
+.row i{width:56px;height:56px;border-radius:50%;background:var(--white);display:flex;align-items:center;justify-content:center;box-shadow:0 6px 16px rgba(0,0,0,.25)}
+.row img{width:34px;height:30px;object-fit:contain}
+/* photo */
+.halo{left:790px;top:40px;width:470px;height:470px;border-radius:50%;background:radial-gradient(circle,rgba(110,152,255,.55),rgba(48,103,255,.15) 55%,rgba(48,103,255,0) 70%)}
+.photo{left:770px;top:42px;width:510px;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 14%,#000 86%,transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 14%,#000 86%,transparent 100%);filter:drop-shadow(0 0 18px rgba(48,103,255,.55)) drop-shadow(0 18px 30px rgba(0,0,0,.35))}
+/* services */
+.svc{left:1400px;top:60px;width:540px}
+.svc h3{font-weight:800;font-style:normal;font-size:40px;letter-spacing:.5px;color:var(--blue2);transform:skewX(-6deg);text-shadow:0 4px 18px rgba(48,103,255,.5)}
+.svc ul{list-style:none;margin-top:14px}
+.svc li{display:flex;align-items:center;gap:14px;font-weight:600;font-size:27px;line-height:1.75}
+.svc li:before{content:"";width:0;height:0;border-left:13px solid var(--white);border-top:8px solid transparent;border-bottom:8px solid transparent}
+.claim{left:1400px;top:362px;display:flex;align-items:center;gap:14px;height:64px;padding:0 26px 0 10px;border-radius:40px;background:var(--white);color:var(--navy);font-weight:800;font-size:25px;box-shadow:0 10px 26px rgba(0,0,0,.3)}
+.claim i{width:44px;height:44px;border-radius:50%;background:var(--blue);display:flex;align-items:center;justify-content:center}
+.claim svg{width:24px;height:24px;stroke:#fff;fill:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.claim b{color:var(--blue)}
+</style></head><body>
+<svg id="bg" class="abs" width="2000" height="504" viewBox="0 0 2000 504">
+ <defs><filter id="grain"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" stitchTiles="stitch"/><feColorMatrix values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 .06 0"/></filter>
+ <linearGradient id="bar" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6E98FF" stop-opacity=".22"/><stop offset="1" stop-color="#6E98FF" stop-opacity="0"/></linearGradient></defs>
+ <g fill="url(#bar)">
+  <rect x="620" y="300" width="34" height="204"/><rect x="668" y="250" width="34" height="254"/><rect x="716" y="200" width="34" height="304"/>
+  <rect x="1290" y="170" width="34" height="334"/><rect x="1338" y="120" width="34" height="384"/><rect x="1386" y="210" width="34" height="294" opacity=".6"/>
+  <rect x="1860" y="300" width="34" height="204"/><rect x="1908" y="240" width="34" height="264"/>
+ </g>
+ <path d="M640 330 L700 270 L760 290 L840 200" stroke="#6E98FF" stroke-opacity=".35" stroke-width="3" fill="none"/>
+ <rect width="2000" height="504" filter="url(#grain)"/>
+</svg>
+
+<div class="abs hl l1"><span>Marketing Expert &amp;</span></div>
+<div class="abs hl l2"><span>AI Search</span></div>
+<div class="abs hl l3"><span>Specialist</span></div>
+<svg class="abs swoosh" width="420" height="30" viewBox="0 0 420 30" fill="none"><path d="M4 22 C 120 4, 280 4, 416 16" stroke="#3067FF" stroke-width="6" stroke-linecap="round"/></svg>
+
+<div class="abs row"><p>Expert in</p>
+ <i><img src="img/logos/shopify.png"></i><i><img src="img/logos/highlevel.png"></i><i><img src="img/logos/n8n.png"></i><i><img src="img/logos/meta.png"></i><i><img src="img/logos/wordpress.png"></i><i><img src="img/logos/google-ads.png"></i><i><img src="img/logos/icon-8.png"></i><i><img src="img/logos/icon-9.png"></i>
+</div>
+
+<div class="abs halo"></div>
+<img class="abs photo" src="img/cutout.png">
+
+<div class="abs svc"><h3>MY SERVICES</h3><ul>
+ <li>Marketing Expert &amp; AI SEO</li>
+ <li>Semantic SEO</li>
+ <li>AI Automation</li>
+ <li>GoHighLevel Expert</li>
+</ul></div>
+<div class="abs claim"><i><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></i>Worked With <b>75+ Happy Clients</b></div>
+</body></html>
