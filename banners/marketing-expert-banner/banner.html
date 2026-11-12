@@ -1,54 +1,46 @@
 <!doctype html><html><head><meta charset="utf-8"><style>
-/* Profile banner, same layout as the original (2000x504), in the Permanent SEO red brand. */
+/* Profile banner, same layout as the original (2000x504), in blue #3067FF and white #FEFEFE. */
 @font-face{font-family:Inter;font-weight:500;src:url(fonts/Inter-Medium.otf)}
 @font-face{font-family:Inter;font-weight:600;src:url(fonts/Inter-SemiBold.otf)}
 @font-face{font-family:Inter;font-weight:700;src:url(fonts/Inter-Bold.otf)}
 @font-face{font-family:Inter;font-weight:800;src:url(fonts/Inter-ExtraBold.otf)}
 @font-face{font-family:HeadSerif;font-weight:700;src:url(fonts/LiberationSerif-Bold.ttf)}
 @font-face{font-family:Bebas;src:url(fonts/BebasNeue-Regular.ttf)}
-:root{--red:#C40303;--red2:#E41B1B;--deep:#8E0202;--ink:#1F0B0B;--muted:#6E5C5C}
+:root{--blue:#3067FF;--blue2:#5A88FF;--blue3:#1C4FE0;--white:#FEFEFE;--ink:#0F1B3D}
 *{margin:0;padding:0;box-sizing:border-box}
 html,body{width:2000px;height:504px;overflow:hidden}
-body{position:relative;font-family:Inter,sans-serif;color:var(--ink);background:#FFF9F9;
- background-image:linear-gradient(rgba(196,3,3,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(196,3,3,.06) 1px,transparent 1px);background-size:54px 54px;background-position:-1px -1px}
-.blob{position:absolute;border-radius:50%;background:rgba(196,3,3,.07)}
+body{position:relative;font-family:Inter,sans-serif;color:var(--ink);background:var(--white);
+ background-image:linear-gradient(rgba(48,103,255,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(48,103,255,.07) 1px,transparent 1px);background-size:54px 54px;background-position:-1px -1px}
+.blob{position:absolute;border-radius:50%;background:rgba(48,103,255,.08)}
 .abs{position:absolute}
-/* logo top-left */
-.logo{left:32px;top:18px;display:flex;align-items:center;gap:14px}
-.logo .tile{width:64px;height:64px;border-radius:3px;background:linear-gradient(180deg,#2B55F4,#2440B8 55%,#1C2568);display:flex;align-items:center;justify-content:center;box-shadow:0 6px 14px rgba(28,37,104,.25)}
-.logo .tile img{width:46px;display:block}
-.logo p{font-weight:700;font-size:37px;letter-spacing:-.8px;color:var(--ink)}
-.logo p b{color:var(--red);font-weight:700}
+/* top-left claim (where the logo text was) */
+.claim{left:32px;top:30px;font-weight:700;font-size:28px;letter-spacing:-.6px;color:var(--ink);white-space:nowrap}
+.claim b{color:var(--blue);font-weight:800}
 /* headline */
 .hl{left:0;width:1960px;text-align:center;font-family:HeadSerif;font-weight:700;line-height:1;white-space:nowrap}
 .hl span.sq{display:inline-block;transform:scaleX(.84);transform-origin:center}
 .l1{top:34px;font-size:118px}
 .l2{top:140px;font-size:118px}
-.grad{background:linear-gradient(180deg,var(--red2),var(--red) 55%,var(--deep));-webkit-background-clip:text;background-clip:text;color:transparent}
+.grad{background:linear-gradient(180deg,var(--blue2),var(--blue) 55%,var(--blue3));-webkit-background-clip:text;background-clip:text;color:transparent}
 .bebas .hl{font-family:Bebas;font-weight:400;letter-spacing:1px}
 .bebas .l1,.bebas .l2{font-size:132px}
 .bebas .l1{top:28px}.bebas .l2{top:146px}
 .bebas .hl span.sq{transform:none}
 /* skills pill */
-.pill{left:460px;top:285px;width:1020px;height:84px;border:3px solid var(--red);border-radius:44px;background:rgba(255,255,255,.75);display:flex;align-items:center;justify-content:space-evenly;font-weight:500;font-size:30px;letter-spacing:-.4px;box-shadow:0 10px 26px rgba(196,3,3,.10)}
-.pill i{width:3px;height:42px;border-radius:2px;background:var(--red)}
+.pill{left:460px;top:285px;width:1020px;height:84px;border:3px solid var(--blue);border-radius:44px;background:rgba(255,255,255,.75);display:flex;align-items:center;justify-content:space-evenly;font-weight:500;font-size:30px;letter-spacing:-.4px;box-shadow:0 10px 26px rgba(48,103,255,.12)}
+.pill i{width:3px;height:42px;border-radius:2px;background:var(--blue)}
 /* expert row */
-.row{left:474px;top:409px;display:flex;align-items:center;gap:21px}
+.row{left:474px;top:412px;display:flex;align-items:center;gap:22px}
 .row p{font-weight:500;font-size:31px;letter-spacing:-.4px;margin-right:2px}
-.row img{width:62px;height:62px;border-radius:50%;box-shadow:0 4px 12px rgba(31,11,11,.12);background:#fff}
+.row img{width:66px;height:54px;object-fit:contain;display:block}
 /* photo */
 .photo{left:1508px;top:42px;width:510px}
-/* badge */
-.badge{left:1812px;top:318px;width:184px;padding:12px 8px 14px 16px;background:rgba(255,255,255,.92);border-radius:14px;transform:rotate(-12deg);box-shadow:0 8px 20px rgba(196,3,3,.15)}
-.badge p{font-weight:800;font-style:normal;font-size:24px;line-height:1.14;transform:skewX(-8deg);white-space:nowrap;background:linear-gradient(90deg,var(--red),var(--red2));-webkit-background-clip:text;background-clip:text;color:transparent}
-.doodle{left:1950px;top:262px}
-.arrow{left:1748px;top:372px;transform:scaleX(-1)}
 </style></head><body>
 <div class="blob" style="width:420px;height:420px;left:-170px;bottom:-250px"></div>
-<div class="blob" style="width:260px;height:260px;left:780px;top:-200px;background:rgba(196,3,3,.05)"></div>
-<div class="blob" style="width:300px;height:300px;right:-120px;top:-170px;background:rgba(196,3,3,.05)"></div>
+<div class="blob" style="width:260px;height:260px;left:780px;top:-200px;background:rgba(48,103,255,.06)"></div>
+<div class="blob" style="width:300px;height:300px;right:-120px;top:-170px;background:rgba(48,103,255,.06)"></div>
 
-<div class="abs logo"><div class="tile"><img src="img/logo-white.png"></div><p>Permanent <b>SEO</b></p></div>
+<div class="abs claim">Worked With <b>75+ Happy Clients</b></div>
 
 <div class="abs hl l1"><span class="sq">Marketing Expert &amp;</span></div>
 <div class="abs hl l2"><span class="sq"><span class="grad">AI Search</span>&nbsp; Specialist</span></div>
@@ -56,13 +48,10 @@ body{position:relative;font-family:Inter,sans-serif;color:var(--ink);background:
 <div class="abs pill"><span>Marketing Expert &amp; AI SEO</span><i></i><span>AI Automation</span><i></i><span>GoHighLevel Expert</span></div>
 
 <div class="abs row"><p>Expert in</p>
- <img src="img/shopify.png"><img src="img/highlevel.png"><img src="img/n8n.png"><img src="img/meta.png"><img src="img/wordpress.png"><img src="img/google-ads.png"><img src="img/icon-8.png"><img src="img/icon-9.png">
+ <img src="img/logos/shopify.png"><img src="img/logos/highlevel.png"><img src="img/logos/n8n.png"><img src="img/logos/meta.png"><img src="img/logos/wordpress.png"><img src="img/logos/google-ads.png"><img src="img/logos/icon-8.png"><img src="img/logos/icon-9.png">
  <p style="margin-left:4px">&amp; More</p></div>
 
 <img class="abs photo" src="img/cutout.png">
 
-<div class="abs badge"><p>Worked With<br>75+ Happy<br>Clients</p></div>
-<svg class="abs doodle" width="60" height="50" viewBox="0 0 60 50" fill="none" stroke="#C40303" stroke-width="2.5" stroke-linecap="round"><path d="M22 40 L26 22M36 38 L48 18M44 44 L58 36"/></svg>
-<svg class="abs arrow" width="70" height="70" viewBox="0 0 70 70" fill="none" stroke="#C40303" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M10 52 C 30 58, 52 46, 58 18"/><path d="M48 26 L58 16 L64 30"/></svg>
 <script>if(location.hash==='#bebas')document.body.classList.add('bebas')</script>
 </body></html>
